@@ -1,0 +1,14 @@
+{
+	"name": "jsutils",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Az-Heda/JS-stuff.git"
+	},
+	"homepage": "https://github.com/Az-Heda",
+	"author": "AzHeda",
+	"license": "ISC"
+}

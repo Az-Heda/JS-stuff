@@ -1,4 +1,8 @@
 # MySpeechRecognition
+## Fast import
+```html
+<script src="https://raw.githubusercontent.com/Az-Heda/JS-stuff/master/SpeechRecgnition/speechRecognition.js"></script>
+```
 
 ## Usage
 ```js
