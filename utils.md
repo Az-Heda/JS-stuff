@@ -2,11 +2,11 @@
 
 <h2>
 map(<br/>
-	n : number,<br/>
-	start1 : number,<br/>
-	stop1 : number,<br/>
-	start2 : number,<br/>
-	stop2 : number<br/>
+	&emsp;&emsp; n : number,<br/>
+	&emsp;&emsp; start1 : number,<br/>
+	&emsp;&emsp; stop1 : number,<br/>
+	&emsp;&emsp; start2 : number,<br/>
+	&emsp;&emsp; stop2 : number<br/>
 )
 </h2>
 <p>Number mapping from one range to another</p>
