@@ -33,7 +33,7 @@ function deepCopy(item) {
 	return JSON.parse(JSON.stringify(item));
 }
 
-function idFromString(str) {
+function IDFromString(str) {
 	let thisString = `${str}`;
 	var len = thisString.length;
 	let code = 0;
