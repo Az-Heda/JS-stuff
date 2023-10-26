@@ -26,14 +26,18 @@ class WebServer {
 		this.app = express();
 		this.app.use(cors());
 		this.app.use(bodyParser.urlencoded({ extended: true }));
-		this.app.listen(this.port, this.host, () => {
+		this.server = this.app.listen(this.port, this.host, () => {
 			this.#_serverStarted(this.url);
 			this.started = true;
 		});
-
+		this.app.
 		this.#_initConnections();
 		this.#_handleOtherConnections();
 		this.#_endpointList();
+	}
+
+	stop() {
+		this.server.close();
 	}
 
 	#_serverStarted(url) {
