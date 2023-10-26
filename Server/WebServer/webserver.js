@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
-const _ = require('./_');
+const _ = require('./../_');
 
 const DEFAULT = {
 	host: 'localhost',
