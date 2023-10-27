@@ -85,3 +85,20 @@ Object.prototype.sort = function() {
 	}
 	return newObject;
 };
+
+
+function getElementByAttribute(attr, value, root) {
+	root = root || document.body;
+	if(root.hasAttribute(attr) && root.getAttribute(attr) == value) {
+		return root;
+	}
+	let children = root.children;
+	let elements = [];
+	for(let i = children.length; i--; ) {
+		let element = getElementByAttribute(attr, value, children[i]);
+		if(element) {
+			elements.push(element);
+		}
+	}
+	return elements;
+}

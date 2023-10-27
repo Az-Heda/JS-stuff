@@ -183,3 +183,20 @@ console.log(testObject.sort())
 	status: "fulfilled"
 }
 ```
+
+<hr/>
+<h2>
+getElementByAttribute (<br/>
+	&emsp;&emsp; attr : [string]<br/>
+	&emsp;&emsp; value : [string | number]<br/>
+	&emsp;&emsp; root : [HTMLElement] = document.body<br/>
+) -> [Array[HTMLElement]]
+</h2>
+
+```html
+<div data-type="number">
+<script>
+	console.log(getElementByAttribute('data-type', 'number', document.body))
+	>>> div
+</script>
+```
