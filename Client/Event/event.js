@@ -21,6 +21,7 @@ class MyEvent {
 		if (Object.keys(this.#_events).includes(eventName)) {
 			if (Object.keys(this.#_events[eventName]).includes(id)) {
 				delete this.#_events[eventName][id];
+				delete this.#_events[eventName];
 			}
 		}
 	}
@@ -40,5 +41,14 @@ class MyEvent {
 
 	static get events() {
 		return Object.keys(this.#_events)
+	}
+
+	static getIDSFromEvent(evtname) {
+		if (Object.keys(this.#_events).includes(evtname)) {
+			return Object.keys(this.#_events[evtname]);
+		}
+		else {
+			return [];
+		}
 	}
 }
