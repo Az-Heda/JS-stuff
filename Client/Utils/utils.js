@@ -48,11 +48,11 @@ function IDFromString(str) {
 	return Math.floor(Math.abs(code));
 }
 
-String.prototype.hashSeed = function(seed = 0) {
+function hashSeed(str, seed = 0) {
 	let h1 = 0xdeadbeef ^ seed;
 	let h2 = 0x41c6ce57 ^ seed;
-	for (let i = 0, ch; i < this.length; i++) {
-		ch = this.charCodeAt(i);
+	for (let i = 0, ch; i < str.length; i++) {
+		ch = str.charCodeAt(i);
 		h1 = Math.imul(h1 ^ ch, 2654435761)
 		h2 = Math.imul(h2 ^ ch, 1597334677);
 	}
@@ -64,8 +64,7 @@ String.prototype.hashSeed = function(seed = 0) {
 };
 
 
-String.prototype.capitalize = function() {
-	const str = this;
+function capitalize(str) {
 	const arr = str.split(" ");
 	for (var i = 0; i < arr.length; i++) {
 		arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
@@ -75,13 +74,13 @@ String.prototype.capitalize = function() {
 };
 
 
-Object.prototype.sort = function() {
-	const keys = Object.keys(this);
+function sortObject(obj) {
+	const keys = Object.keys(obj);
 	let newObject = {};
 	keys.sort();
 	for (let i = 0; i < keys.length; i++) {
 		let k = keys[i];
-		newObject[k] = this[k];
+		newObject[k] = obj[k];
 	}
 	return newObject;
 };
@@ -101,4 +100,43 @@ function getElementByAttribute(attr, value, root) {
 		}
 	}
 	return elements;
+}
+
+function logMessage(title, text, styles={}) {
+	const stringPairings = {
+		'blue': ['#007bff', '#000'],
+		'indigo': ['#6610f2', '#fff'],
+		'purple': ['#6f42c1', '#fff'],
+		'pink': ['#e83e8c', '#000'],
+		'red': ['#dc3545', '#000'],
+		'orange': ['#fd7e14', '#000'],
+		'yellow': ['#ffc107', '#000'],
+		'green': ['#28a745', '#000'],
+		'teal': ['#20c997', '#000'],
+		'cyan': ['#17a2b8', '#000'],
+		'white': ['#fff', '#000'],
+		'black': ['#000', '#fff'],
+		'gray': ['#6c757d', '#fff'],
+		'darkgray': ['#343a40', '#fff'],
+		'primary': ['#007bff', '#000'],
+		'secondary': ['#6c757d', '#fff'],
+		'success': ['#28a745', '#000'],
+		'info': ['#17a2b8', '#000'],
+		'warning': ['#ffc107', '#000'],
+		'warn': ['#ffc107', '#000'],
+		'danger': ['#dc3545', '#000'],
+		'light': ['#f8f9fa', '#000'],
+		'dark': ['#343a40', '#fff'],
+	}
+	if (typeof styles == 'string') {
+		styles = (Object.keys(stringPairings).includes(styles)) ? { 'background-color': stringPairings[styles][0], color: stringPairings[styles][1] } : {};
+	}
+	const css = {
+		'background-color': 'transparent',
+		'padding': '5px 10px',
+		'font-weight': 'bold',
+		'text-transform': 'uppercase',
+		...styles
+	}
+	console.log(`%c[${title}]`, Object.entries(css).map((item) => { return item.join(': ') }).join('; '), text);
 }
