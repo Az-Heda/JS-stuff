@@ -132,6 +132,3 @@ class Color {
 		return color;
 	}
 }
-
-
-Color.textColor
