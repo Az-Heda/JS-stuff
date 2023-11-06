@@ -3,7 +3,11 @@
 	"version": "1.0.9",
 	"description": "",
 	"main": "index.js",
-	"scripts": {},
+	"scripts": {
+		"precheck": "echo check 1",
+		"check": "echo check 2",
+		"postcheck": "echo check 3"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Az-Heda/JS-stuff.git"
