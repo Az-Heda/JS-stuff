@@ -23,7 +23,7 @@ class MySocket {
 		if (valid.includes(type)) {
 			this.socket.addEventListener(type, (type !== 'message') ?
 				f :
-				(event) => { f(event.data) }
+				(event) => { f(JSON.parse(event.data)) }
 			);
 		}
 	}
