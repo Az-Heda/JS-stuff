@@ -1,0 +1,11 @@
+{
+    "cells": [
+        {
+            "language": "javascript",
+            "source": [
+                "const = '';\r\n\r\nfunction sum(a, b) {\r\n\treturn a + b;\r\n}"
+            ],
+            "outputs": []
+        }
+    ]
+}
