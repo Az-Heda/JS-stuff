@@ -14,9 +14,8 @@
 // }
 // module.exports = get();
 
-return {
+module.exports = {
 	DownloadFile: require('./DownloadFile/downloadFile'),
 	WebServer: require('./WebServer/webserver'),
 	Sleep: require('./Sleep/sleep'),
-	Decorators: require('./Decorators/decorators')
 };

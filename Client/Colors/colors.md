@@ -1,5 +1,15 @@
 # Color
 
+## Import
+### CDN JSDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Colors/colors.js"></script>
+```
+### Unpkg
+```html
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Colors/colors.js"></script>
+```
+
 ## Usage
 ```js
 Color.textColor // String -> Return an HEX Color for the current theme

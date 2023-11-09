@@ -1,5 +1,15 @@
 # Tag
 
+## Import
+### CDN JSDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Tag/tag.js"></script>
+```
+### Unpkg
+```html
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Tag/tag.js"></script>
+```
+
 ## Usage
 * Every method is chainable
 

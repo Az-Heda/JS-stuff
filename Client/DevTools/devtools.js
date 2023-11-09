@@ -1,7 +1,28 @@
 class DevToolsInfo {
 	// https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/workerStart
 	static get pageInfo() {
-		return JSON.parse(JSON.stringify(window.performance.getEntriesByType('navigation')));
+		const rs = JSON.parse(JSON.stringify(window.performance.getEntriesByType('navigation')))[0];
+		return {
+			url: rs.name,
+			size: rs.decodedBodySize,
+			duration: rs.duration,
+			entryType: rs.entryType,
+			type: rs.initiatorType,
+			protocol: rs.nextHopProtocol,
+			HTTPCode: rs.responseStatus,
+			timing: {
+				startFetching: rs.fetchStart,
+				connection: rs.connectEnd - rs.connectStart,
+				domainLookup: rs.domainLookupEnd - rs.domainLookupStart,
+				response: rs.responseEnd - rs.responseStart,
+				description: {
+					startFetching: 'milliseconds between the loading of the page and the resource response with all of the bytes',
+					connection: 'Time needed to establish a response with the server',
+					domainLookup: 'Time needed to the server to lookup the domain',
+					response: 'Time needed to receive all of the bytes of the request',
+				}
+			},
+		}
 	}
 
 	static get getResources() {
@@ -48,7 +69,13 @@ class DevToolsInfo {
 	}
 
 	static get timing() {
-		return Object.assign({}, ...Object.entries(window.performance.timing.toJSON()).map((i) => { return { [i[0]]: new Date(i[1]).toISOString().substr(11, 12) } }))
+		return Object.assign({}, ...Object.entries(window.performance.timing.toJSON())
+			.map((i) => {
+				return {
+					[i[0]] : i[1]
+				}
+			})
+		)
 	}
 
 	/**
@@ -76,22 +103,3 @@ class DevToolsInfo {
 		return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 	}
 }
-
-
-function sum(a, b) {
-	return a + b;
-}
-
-async function sleep(ms) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, ms, ms);
-	})
-}
-
-const MySum = new Proxy(sleep, {
-	apply(MyCustomFunction, that, args) {
-		const result = Reflect.apply(MyCustomFunction, that, args);
-		result.then((ms) => { console.log(`Ho aspettato`, { ms }) })
-		return result;
-	}
-});

@@ -1,5 +1,15 @@
 # MyEvent
 
+## Import
+### CDN JSDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Event/event.js"></script>
+```
+### Unpkg
+```html
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Event/event.js"></script>
+```
+
 ## Usage
 
 ### Binding an event

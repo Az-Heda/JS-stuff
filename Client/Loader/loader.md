@@ -1,5 +1,15 @@
 # Loader
 
+## Import
+### CDN JSDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Loader/loader.js"></script>
+```
+### Unpkg
+```html
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Loader/loader.js"></script>
+```
+
 ## Usage
 ```js
 Loader.tagInBody // -> true|false

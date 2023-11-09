@@ -1,5 +1,15 @@
 # MySocket
 
+## Import
+### CDN JSDeliver
+```html
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Socket/socket.js"></script>
+```
+### Unpkg
+```html
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Socket/socket.js"></script>
+```
+
 ## Usage
 
 ### Initialize

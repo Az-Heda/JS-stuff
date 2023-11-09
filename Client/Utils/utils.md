@@ -1,8 +1,13 @@
 <h1>Util functions</h1>
 
-## Fast import
+## Import
+### CDN JSDeliver
 ```html
-<script src="https://raw.githubusercontent.com/Az-Heda/JS-stuff/master/Utils/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Utils/utils.js"></script>
+```
+### Unpkg
+```html
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Utils/utils.js"></script>
 ```
 
 <h2>
@@ -142,23 +147,27 @@ console.log('text 2'.hashSeed(1)); // Same seed and string = same output
 
 <hr/>
 <h2>
-String.prototype.capitalize () -> [string]
+capitalize (<br/>
+	&emsp;&emsp; str : [string]<br/>
+) -> [string]
 </h2>
 
 ```js
-console.log('hello'.capitalize());
+console.log(capitalize('hello'));
 >>> Hello 
 
-console.log('world'.capitalize());
+console.log(capitalize('world'));
 >>> World 
 
-console.log('hello world'.capitalize());
+console.log(capitalize('hello world'));
 >>> Hello World 
 ```
 
 <hr/>
 <h2>
-Object.prototype.sort () -> [object]
+sortObject (<br/>
+	&emsp;&emsp;obj [object]<br/>
+) -> [object]
 </h2>
 
 ```js
@@ -172,7 +181,7 @@ const testObject = {
 	done: true
 }
 
-console.log(testObject.sort())
+console.log(sortObject(testObject))
 >>> {
 	b: 0,
 	done: true,
@@ -199,4 +208,18 @@ getElementByAttribute (<br/>
 	console.log(getElementByAttribute('data-type', 'number', document.body))
 	>>> div
 </script>
+```
+
+<hr/>
+<h2>
+logMessage (<br/>
+	&emsp;&emsp; title : [string]<br/>
+	&emsp;&emsp; text : [any]<br/>
+	&emsp;&emsp; styles : [object] = {}<br/>
+) -> [Void]
+</h2>
+
+```js
+logMessage('title', 'text', { 'color': '#F00' });
+logMessage('title', 'text', { 'color': '#000', 'background-color': '#0A0', 'padding': '5px' });
 ```
