@@ -1,3 +1,5 @@
 node_modules/
+llama-*/
+
 package-lock.json
 .danfo

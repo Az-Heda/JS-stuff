@@ -95,14 +95,3 @@ const MySum = new Proxy(sleep, {
 		return result;
 	}
 });
-
-
-// setTimeout(() => {
-// 	console.clear();
-// 	Object.entries(DevToolsInfo.sizeUsed).map((i) => { console.log(...i)});
-// 	console.log(DevToolsInfo.timing);
-// 	console.log('Connected for ', DevToolsInfo.timeConnected(false), 'ms')
-// 	console.log(DevToolsInfo.pageInfo[0]);
-// 	console.log(DevToolsInfo.getResources)
-// }, 1000)
-
