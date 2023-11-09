@@ -1,12 +1,12 @@
 {
     "name": "azheda-utils-v2",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "",
     "main": "index.js",
     "scripts": {
         "prepublishOnly": "node private/change-version.js",
-		"readme": "node private/readme-generator.js",
-		"watchReadme": "nodemon --ext js private/readme-generator.js"
+        "readme": "node private/readme-generator.js",
+        "watchReadme": "nodemon --ext js private/readme-generator.js"
     },
     "repository": {
         "type": "git",
