@@ -1,6 +1,3 @@
-// https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Swap/swap.min.js
-// https://unpkg.com/azheda-utils-v2@latest/Client/Swap/swap.js
-
 class Swappable {
 	static #_elements = {};
 	static #_swapGroupAttr = 'swap-group';
