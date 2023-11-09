@@ -90,7 +90,7 @@ const t = new Tag('form')
 
 // Same as
 
-t.addEventListener('submit', (event) => { event.preventDefault() });
+t.node.addEventListener('submit', (event) => { event.preventDefault() });
 ```
 
 ### .hide() and .show()
