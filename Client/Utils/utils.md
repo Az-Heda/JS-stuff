@@ -1,4 +1,6 @@
-<h1>Util functions</h1>
+<h1>Utils functions</h1>
+
+[Homepage](../../README.md)
 
 ## Import
 ### CDN JSDeliver
