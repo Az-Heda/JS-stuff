@@ -27,7 +27,11 @@ function generate(fname) {
 			let md = allf.filter((item) => { return item.split('.').splice(-1)[0].toLowerCase() == 'md'})
 			.map((item) => { return path.join(f, item).replaceAll('\\', '/'); });
 			console.log(md);
-			lines.push(`${i+1}. [${f.split('/')[1]}](${md[0]})`)
+			if (md.length > 0) {
+				lines.push(`${i+1}. [${f.split('/')[1]}](${md[0]})`)
+			} else {
+				lines.push(`${i+1}. ${f.split('/')[1]} (Not working yet)`)
+			}
 		})
 	})
 	fs.writeFileSync(fname, lines.join('\n'))

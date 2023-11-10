@@ -1,5 +1,25 @@
-div {
+div[movable] {
 	position: absolute;
+	user-select: none;
+}
+
+div[movable]:hover {
+	cursor: move;
+}
+
+
+#test-1 {
+	background-color: #FA0;
+	width: 100px;
+	height: 100px;
 	top: 50%;
-	left: 50%;
+	left: 20%;
+}
+
+#test-2 {
+	background-color: #0a0;
+	width: 100px;
+	height: 100px;
+	top: 50%;
+	right: 20%;
 }
