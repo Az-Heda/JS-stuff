@@ -22,10 +22,12 @@ class dnd {
 	 */
 	static auto() {
 		let elements = this.#_getElementByAttribute('movable');
-		for (let p = 0; p < elements.length; p ++) {
-			this.#_config(elements[p]);
+		if (elements) {
+			for (let p = 0; p < elements.length; p ++) {
+				this.#_config(elements[p]);
+			}
+			this._eventOnDocument();
 		}
-		this._eventOnDocument();
 	}
 
 	/**
