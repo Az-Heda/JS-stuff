@@ -1,5 +1,9 @@
 class MySpeechRecognition {
-	constructor(l=null) {
+	/**
+	 * @param {string} l Language for the initialization
+	 * @returns {MySpeechRecognition}
+	 */
+	constructor(l) {
 		this.callbacks = [];
 		this.srf = window.SpeechRecognition || window.webkitSpeechRecognition;
 		if (this.srf) {
@@ -18,6 +22,9 @@ class MySpeechRecognition {
 		}
 	}
 
+	/**
+	 * @param {...function} ...callback Set all of the callbacks to call once the the SpeechRecognition has a result
+	 */
 	addCallback(...callback) {
 		callback.forEach((cb) => {
 			if (typeof cb === 'function') {
@@ -26,10 +33,16 @@ class MySpeechRecognition {
 		});
 	}
 
+	/**
+	 * Start the Speech Recognition 
+	 */
 	start() {
 		this.sr.start();
 	}
 
+	/**
+	 * @returns {Array<string>} List of supported languages
+	 */
 	static getSupportedLanguages() {
 		return [ 'italiano', 'english' ];
 	}

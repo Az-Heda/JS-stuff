@@ -1,0 +1,6 @@
+Name: DBML Live Preview
+Id: nicolas-liger.dbml-viewer
+Description: An extension for Visual Studio Code that provides real-time rendering of a database schema from the generated DBML code.
+Version: 0.0.1
+Publisher: Nicolas Liger
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=nicolas-liger.dbml-viewer

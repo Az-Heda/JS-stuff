@@ -3,9 +3,6 @@ class Loader {
 	static #_css = document.createElement('style');
 	static #_theme = 'light';
 	static #_size = { w: 40, h: 40 };
-	static get tagInBody() { return document.body.contains(this.#_tag); }
-	static get cssInBody() { return document.body.contains(this.#_css); }
-	static set darkTheme(themeChecker=false) { return [this.#_theme, this.#_theme = (themeChecker == 0) ? 'light' : 'dark'][0] }
 	static #_className = `cube-${Date.now()}`;
 	static #_colors = {
 		'light': { border: '#000000', background: '#00000040' },
@@ -19,17 +16,47 @@ class Loader {
 		this.#_tag.appendChild(side);
 		return side;
 	});
-	/*________________________________________________________________*/
 	
+	/**
+	 * @param {('light' | 'dark')} themeChecker Set the active theme
+	 */
+	static set darkTheme(themeChecker=false) {
+		return [this.#_theme, this.#_theme = (themeChecker == 0) ? 'light' : 'dark'][0]
+	}
+
+	/**
+	 * @returns {boolean} Check wheather the Loader's Div element is in the DOM
+	 */
+	static get tagInBody() {
+		return document.body.contains(this.#_tag);
+	}
+
+	/**
+	 * @returns {boolean} Check wheather the Loader's Style element is in the DOM
+	 */
+	static get cssInBody() {
+		return document.body.contains(this.#_css);
+	}
+	
+	/**
+	 * @returns {object} Colors for the current active theme
+	 */
 	static get themeColor() {
 		return this.#_colors[this.#_theme];
 	}
 
+	/**
+	 * @returns {boolean} Returns true if all of the tags where succesfully removed from the DOM
+	 */
 	static get remove() {
 		if (this.tagInBody) { this.#_tag.remove(); }
 		if (this.cssInBody) { this.#_css.remove(); }
+		return true;
 	}
 
+	/**
+	 * @returns {{ tag: HTMLDivElement, style: HTMLStyleElement}} Returns the tags for the loader
+	 */
 	static get append() {
 		this.#_style;
 		if (this.#_tag) {

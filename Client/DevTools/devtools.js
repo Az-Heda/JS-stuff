@@ -1,5 +1,8 @@
 class DevToolsInfo {
 	// https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/workerStart
+	/**
+	 * @returns {object} Return some information about the page
+	 */
 	static get pageInfo() {
 		const rs = JSON.parse(JSON.stringify(window.performance.getEntriesByType('navigation')))[0];
 		return {
@@ -25,6 +28,9 @@ class DevToolsInfo {
 		}
 	}
 
+	/**
+	 * @returns {Array<object>} Returns the informations about all of the requests sent by the page
+	 */
 	static get getResources() {
 		const resources = window.performance.getEntriesByType('resource');
 		if (resources) {
@@ -59,6 +65,9 @@ class DevToolsInfo {
 		return resources;
 	}
 
+	/**
+	 * @returns {{jsHeapSizeLimit: {}, totalJSHeapSize: {}, usedJSHeapSize: {}}}
+	 */
 	static get sizeUsed() {
 		const perf = window.performance.memory;
 		return {
@@ -79,22 +88,18 @@ class DevToolsInfo {
 	}
 
 	/**
-	 * @param {*} parse 
-	 * @returns {int|string}
+	 * @param {boolean} parse Specify wheather you want this function to return an integer or a string formatted
+	 * @returns {int|string} Returns the milliseconds or the time in HH:MM:SS.FFF since the last page reload
 	 */
-	static timeConnected(parse=false) {
+	static timeConnected(parse) {
+		if (!parse) { parse = false; }
 		return [
 			performance.now(),
 			new Date(performance.now()).toISOString().substr(11,12)
 		][(parse) ? 1 : 0];
 	}
 
-	/**
-	 * @param {int} bytes 
-	 * @param {int} decimals 
-	 * @returns {string}
-	 */
-	static #_formatBytes (bytes, decimals=2) {
+	static #_formatBytes(bytes, decimals=2) {
 		if (!+bytes) return '0 Bytes';
 		const k = 1024;
 		const dm = (decimals < 0) ? 0 : decimals;

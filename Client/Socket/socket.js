@@ -1,6 +1,7 @@
 class MySocket {
 	/**
 	 * @param {str} url Url with protocol web socket
+	 * @returns {MySocket}
 	 * 
 	 * __Example__
 	 * ```js

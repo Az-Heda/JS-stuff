@@ -11,7 +11,7 @@ class Color {
 	static get isDarkTheme() { return document.body.classList.contains(this.#_darkThemeClass) }
 
 	/**
-	 * @returns {String} Color to be applied on the text based of the current theme (light or dark)
+	 * @returns {string} Color to be applied on the text based of the current theme (light or dark)
 	 */
 	static get textColor() {
 		this.#_currentTheme = (document.body.classList.contains(this.#_darkThemeClass)) ? 'dark' : 'light';
@@ -19,10 +19,10 @@ class Color {
 	}
 
 	/**
-	 * @param {String} color1 First hex color to blend (the one you get with percentage=0)
-	 * @param {String} color2 Second hex color to blend (the one you get with percentage=1)
+	 * @param {string} color1 First hex color to blend (the one you get with percentage=0)
+	 * @param {string} color2 Second hex color to blend (the one you get with percentage=1)
 	 * @param {float} percentage Percentage of mixing between the 2 colors
-	 * @return {String} Hex color
+	 * @returns {string} Hex color
 	 */
 	static blend(color1, color2, percentage) {
 		const int_to_hex = function(num) {
@@ -58,8 +58,8 @@ class Color {
 	}
 
 	/**
-	 * @param {String} hexColor Hex color to invert
-	 * @returns {String} Hex color
+	 * @param {string} hexColor Hex color to invert
+	 * @returns {string} Hex color
 	 */
 	static invert(hexColor) {
 		if (hexColor.length != 4 && hexColor.length != 7)
@@ -78,15 +78,15 @@ class Color {
 	}
 
 	/**
-	 * @param {String} hexColor Hex color to invert
-	 * @returns {String} Hex color
+	 * @param {string} hexColor Hex color to invert
+	 * @returns {string} Hex color
 	 */
 	static invertIfDarkTheme(hexColor) {
 		return (!this.isDarkTheme) ? hexColor : this.invert(hexColor);
 	}
 
 	/**
-	 * @param {String} hexColor Hex color to transform to RGB
+	 * @param {string} hexColor Hex color to transform to RGB
 	 * @returns {Array<r,g,b>} RGB Value of the given hex
 	 */
 	static hex2rgb(hex) {
@@ -106,7 +106,7 @@ class Color {
 	 * @param {int} r R value for the color
 	 * @param {int} g G value for the color
 	 * @param {int} b B value for the color
-	 * @returns {String} Hex color from the given RGB values
+	 * @returns {string} Hex color from the given RGB values
 	 */
 	static rgb2hex(r, g, b) {
 		if (!(r >= 0 && r <= 255)) { throw new Error(`Red value must be between 0 and 255, received ${r}`); }
@@ -117,9 +117,9 @@ class Color {
 	}
 
 	/**
-	 * @param {String} color Hex of the color 
+	 * @param {string} color Hex of the color 
 	 * @param {float} percentage Percentage of Brightness/Shade to apply (positive for brightness, negative for shade)
-	 * @returns {String} Hex color with the given filter
+	 * @returns {string} Hex color with the given filter
 	 */
 	static shade(color, percentage) {
 		if (!(percentage >= -1 && percentage <= 1)) { throw new Error('Percentage must be between -1 and 1')}

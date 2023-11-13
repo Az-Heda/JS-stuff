@@ -3,31 +3,11 @@ class Swappable {
 	static #_swapGroupAttr = 'swap-group';
 	static #_applicationName = 'application-swap';
 	static #_swapGroupAttrValue = '*';
-	static #_debug = false;
-	
-	static #_generateID() {
-		return `Swappable-auto-id-${(new Date()).getTime() * Math.random()}`;
-	}
+	static #_debug = false;	
 
-	static #_getFunction(n) {
-		return {
-			dragStartHandler: (event) => {
-				event.dataTransfer.setData(this.#_applicationName, event.target.id);
-				event.dataTransfer.effectAllow = 'move';
-			},
-			dragOverHandler: (event) => {
-				event.preventDefault();
-				event.dataTransfer.dropEffect = 'move';
-			},
-			dropHandler: (event) => {
-				event.preventDefault();
-				const target = event.target;
-				const source = document.getElementById(event.dataTransfer.getData(this.#_applicationName));
-				this.#_swap(source, target, true);
-			}
-		}
-	}
-
+	/**
+	 * @param {string | HTMLElement} element HTMLElement or the id of an HTMLElement
+	 */
 	static add(element) {
 		if (element.id.length == 0) {
 			element.setAttribute('id', this.#_generateID());
@@ -70,6 +50,29 @@ class Swappable {
 		if (this.#_debug) {
 			if (['log', 'info', 'warn', 'error'].includes(type)) {
 				console[type](`DEBUGGER Swappable - ${type} : `, txt);
+			}
+		}
+	}
+
+	static #_generateID() {
+		return `Swappable-auto-id-${(new Date()).getTime() * Math.random()}`;
+	}
+
+	static #_getFunction(n) {
+		return {
+			dragStartHandler: (event) => {
+				event.dataTransfer.setData(this.#_applicationName, event.target.id);
+				event.dataTransfer.effectAllow = 'move';
+			},
+			dragOverHandler: (event) => {
+				event.preventDefault();
+				event.dataTransfer.dropEffect = 'move';
+			},
+			dropHandler: (event) => {
+				event.preventDefault();
+				const target = event.target;
+				const source = document.getElementById(event.dataTransfer.getData(this.#_applicationName));
+				this.#_swap(source, target, true);
 			}
 		}
 	}
