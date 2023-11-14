@@ -1,7 +1,7 @@
 # JS Tools 
 
 
-# Client
+# Client 
 
 1. [BetterDom](Client/BetterDom/betterdom.md)
 2. [Colors](Client/Colors/colors.md)
@@ -19,7 +19,7 @@
 14. [Utils](Client/Utils/utils.md)
 15. [_css](Client/_css/grid.md)
 
-# Server
+# Server (__BETA__)
 
 1. [DownloadFile](Server/DownloadFile/downloadFile.md)
 2. [Sleep](Server/Sleep/sleep.md)
