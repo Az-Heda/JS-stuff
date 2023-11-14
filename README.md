@@ -23,4 +23,4 @@
 
 1. [DownloadFile](Server/DownloadFile/downloadFile.md)
 2. [Sleep](Server/Sleep/sleep.md)
-3. [WebServer](Server/WebServer/webserver.md)
+3. [WebServer](Server/WebServer/webserver.md) (__BETA__)
