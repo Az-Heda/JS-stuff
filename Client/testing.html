@@ -4,22 +4,42 @@
 		<title>Document</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://unpkg.com/azheda-utils-v2@latest/Client/_css/grid.css"/>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/BetterDom/betterdom.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Colors/colors.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/DevTools/devtools.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/DragNDrop/dnd.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Event/event.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Loader/loader.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Socket/socket.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/SpeechRecognition/speechRecognition.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Storage/storage.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Swap/swap.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Tag/tag.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Time/time.js"></script>
-		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Utils/utils.js"></script>
+		<link rel="stylesheet" href="./_css/grid.css"/>
+		<script src="./BetterDom/betterdom.js"></script>
+		<script src="./Colors/colors.js"></script>
+		<script src="./DevTools/devtools.js"></script>
+		<script src="./DragNDrop/dnd.js"></script>
+		<script src="./Event/event.js"></script>
+		<script src="./Loader/loader.js"></script>
+		<script src="./Socket/socket.js"></script>
+		<script src="./SpeechRecognition/speechRecognition.js"></script>
+		<script src="./Storage/storage.js"></script>
+		<script src="./Swap/swap.js"></script>
+		<script src="./Tag/tag.js"></script>
+		<script src="./Time/time.js"></script>
+		<script src="./Utils/utils.js"></script>
 	</head>
 	<body>
-		
+		<input type="text" id="test"/>
+		<button onclick="BetterDom.saveToClipboard(document.getElementById('test').value)">Copia</button>
+		<script>
+			const r = DevToolsInfo.getResources;
+			r.forEach((file) => {
+				let styles = [
+					'color: #FFF;',
+					'color: #0A0;',
+					'color: #FFF; background-color: #A00; padding-left: 5px; padding-right: 5px',
+					'color: #FA0;',
+				]
+				console.log(`%c[HTTP Code: %c${file.HTTPCode}%c <${file.type}>%c] {%c${Math.floor(file.duration * 10e5) / 10e5}ms%c} ${file.url}`,
+					styles[0],
+					styles[(file.HTTPCode == 200) ? 1 : 2],
+					styles[3],
+					styles[0],
+					styles[3],
+					styles[0],
+				)
+			});
+		</script>
 	</body>
 </html>

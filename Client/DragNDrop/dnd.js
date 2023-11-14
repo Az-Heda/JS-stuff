@@ -102,7 +102,6 @@ class dnd {
 				elements = elements.concat(element);
 			}
 		}
-		console.log(elements)
 		return (elements.length > 0) ? elements : null;
 	}
 }

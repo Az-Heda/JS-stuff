@@ -3,10 +3,10 @@
 
 # Client
 
-1. BetterDom (Not working yet)
+1. [BetterDom](Client/BetterDom/betterdom.md)
 2. [Colors](Client/Colors/colors.md)
 3. [DevTools](Client/DevTools/devtools.md)
-4. DragNDrop (Not working yet)
+4. DragNDrop (__Not working yet__)
 5. [Event](Client/Event/event.md)
 6. [Import](Client/Import/import.md)
 7. [Loader](Client/Loader/loader.md)

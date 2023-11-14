@@ -1,0 +1,103 @@
+{
+    "cells": [
+        {
+            "language": "javascript",
+            "source": [
+                "function map(n, start1, stop1, start2, stop2) {\r\n\treturn (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;\r\n}\r\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function r(min, max, seed=1) {\r\n\tlet value = seed;\r\n\treturn function() {\r\n\t\tvalue = map(Math.sin(value * 16807 % 2147483647), -1, 1, min, max);\r\n\t\treturn value\r\n\t}\r\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let generator = r(0, 10, 18773e27)\r\nlet data = {};"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "let start = new Date();\r\nfor (let p = 0; p < 1e8; p ++) {\r\n\tlet n = parseInt(generator()+0.5);\r\n\tlet key = `${n}`\r\n\tif (key in data)\t{\r\n\t\tdata[key] += 1\r\n\t}\r\n\telse {\r\n\t\tdata[key] = 1;\r\n\t}\r\n}\r\nlet end = new Date();\r\nlet diff = end.getTime() - start.getTime();\r\nconsole.log(`Time spent: ${new Date(diff).toISOString().substr(11, 12)}`)\r\ndata"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Time spent: 00:01:41.966",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "{",
+                                "  \u001b[32m'0'\u001b[39m: \u001b[33m16322452\u001b[39m,",
+                                "  \u001b[32m'1'\u001b[39m: \u001b[33m12457068\u001b[39m,",
+                                "  \u001b[32m'2'\u001b[39m: \u001b[33m9107336\u001b[39m,",
+                                "  \u001b[32m'3'\u001b[39m: \u001b[33m7925856\u001b[39m,",
+                                "  \u001b[32m'4'\u001b[39m: \u001b[33m7403567\u001b[39m,",
+                                "  \u001b[32m'5'\u001b[39m: \u001b[33m7305892\u001b[39m,",
+                                "  \u001b[32m'6'\u001b[39m: \u001b[33m7450097\u001b[39m,",
+                                "  \u001b[32m'7'\u001b[39m: \u001b[33m7962840\u001b[39m,",
+                                "  \u001b[32m'8'\u001b[39m: \u001b[33m9158181\u001b[39m,",
+                                "  \u001b[32m'9'\u001b[39m: \u001b[33m12570359\u001b[39m,",
+                                "  \u001b[32m'10'\u001b[39m: \u001b[33m16336352\u001b[39m",
+                                "}"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

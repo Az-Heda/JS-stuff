@@ -6,20 +6,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="import.js"></script>
 		<script>
-			MyImport.js('jquery');
-		</script>
-
-		<script defer>
-			function idk() {
-				$(document).ready(() => {
-					console.log('Funziona!');
-				})
-			}
-
-			idk();
+			MyImport.css('bootstrap').then(console.log);
+			// MyImport.js('jquery').then(console.log);
+			// MyImport.js('bootstrap').then(console.log);
+			// MyImport.js('danfo').then(console.log);
 		</script>
 	</head>
 	<body>
-		
+		<div class="container" style="background-color: #FFAA0022">
+			<h1>Text</h1>
+		</div>
 	</body>
 </html>
