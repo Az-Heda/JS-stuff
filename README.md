@@ -23,4 +23,16 @@
 
 1. [DownloadFile](Server/DownloadFile/downloadFile.md)
 2. [Sleep](Server/Sleep/sleep.md)
-3. [WebServer](Server/WebServer/webserver.md) (__BETA__)
+3. [WebServer](Server/WebServer/webserver.md)
+
+
+### Server side dependencies:
+- axios @^1.5.1
+- body-parser @^1.20.2
+- cli-table @^0.3.11
+- colors @^1.4.0
+- cors @^2.8.5
+- express @^4.18.2
+- express-list-endpoints @^6.0.0
+- fs @^0.0.1-security
+- path @^0.12.7

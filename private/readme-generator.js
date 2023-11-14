@@ -33,6 +33,14 @@ function generate(fname) {
 				lines.push(`${i+1}. ${f.split('/')[1]} (__Not working yet__)`)
 			}
 		})
+		if (dir == 'Server') {
+			let package = JSON.parse(Buffer.from(fs.readFileSync('package.json')).toString())
+			lines.push('\n');
+			lines.push('### Server side dependencies:')
+			for (let [k, v] of Object.entries(package.dependencies)) {
+				lines.push(`- ${k} @${v}`)
+			}
+		}
 	})
 	fs.writeFileSync(fname, lines.join('\n'))
 }
