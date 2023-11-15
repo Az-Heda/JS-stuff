@@ -2,6 +2,28 @@ class DevToolsInfo {
 	// https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/workerStart
 	/**
 	 * @returns {object} Return some information about the page
+	 * @data_structure
+	 * 
+	 * - url: string,
+	 * - size: int,
+	 * - duration: int,
+	 * - entryType: int,
+	 * - type: string,
+	 * - protocol: string,
+	 * - httpCode: int,
+	 * - timing: {
+	 * - - startFetching: int,
+	 * - - connection: int,
+	 * - - domainLookup: int,
+	 * - - response: int,
+	 * - - description: {
+	 * - - - startFetching: string,
+	 * - - - connection: string,
+	 * - - - domainLookup: string,
+	 * - - - response: string
+	 * - - }
+	 * - }
+	 * }
 	 */
 	static get pageInfo() {
 		const rs = JSON.parse(JSON.stringify(window.performance.getEntriesByType('navigation')))[0];
@@ -30,6 +52,28 @@ class DevToolsInfo {
 
 	/**
 	 * @returns {Array<object>} Returns the informations about all of the requests sent by the page
+	 * @data_structure
+	 * 
+	 * - url: string,
+	 * - size: int,
+	 * - duration: int,
+	 * - entryType: int,
+	 * - type: string,
+	 * - protocol: string,
+	 * - httpCode: int,
+	 * - timing: {
+	 * - - startFetching: int,
+	 * - - connection: int,
+	 * - - domainLookup: int,
+	 * - - response: int,
+	 * - - description: {
+	 * - - - startFetching: string,
+	 * - - - connection: string,
+	 * - - - domainLookup: string,
+	 * - - - response: string
+	 * - - }
+	 * - }
+	 * }
 	 */
 	static get getResources() {
 		const resources = window.performance.getEntriesByType('resource');
@@ -66,6 +110,7 @@ class DevToolsInfo {
 	}
 
 	/**
+	 * @no_docs
 	 * @returns {{jsHeapSizeLimit: {}, totalJSHeapSize: {}, usedJSHeapSize: {}}}
 	 */
 	static get sizeUsed() {
@@ -89,7 +134,7 @@ class DevToolsInfo {
 
 	/**
 	 * @param {boolean} parse Specify wheather you want this function to return an integer or a string formatted
-	 * @returns {int|string} Returns the milliseconds or the time in HH:MM:SS.FFF since the last page reload
+	 * @returns {int | string} Returns the milliseconds or the time in HH:MM:SS.FFF since the last page reload
 	 */
 	static timeConnected(parse) {
 		if (!parse) { parse = false; }
@@ -99,6 +144,12 @@ class DevToolsInfo {
 		][(parse) ? 1 : 0];
 	}
 
+	/**
+	 * @no_docs
+	 * @param {int} bytes Number of bytes to convert into KB, MB, GB etc
+	 * @param {int} decimals How many decimal can have the output number
+	 * @returns {string} Bytes converted into KB, MB, GB etc
+	 */
 	static #_formatBytes(bytes, decimals=2) {
 		if (!+bytes) return '0 Bytes';
 		const k = 1024;

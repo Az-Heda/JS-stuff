@@ -11,6 +11,7 @@ class Color {
 	static get isDarkTheme() { return document.body.classList.contains(this.#_darkThemeClass) }
 
 	/**
+	 * @no_docs
 	 * @returns {string} Color to be applied on the text based of the current theme (light or dark)
 	 */
 	static get textColor() {
@@ -23,6 +24,13 @@ class Color {
 	 * @param {string} color2 Second hex color to blend (the one you get with percentage=1)
 	 * @param {float} percentage Percentage of mixing between the 2 colors
 	 * @returns {string} Hex color
+	 * 
+	 * __Example__
+	 * ```js
+	 * Color.blend('#FF0000', '#00FF00', 0.2); // #CC3300
+	 * Color.blend('#FFAAEE', '#FFF999', 0.5); // #FFD2C4
+	 * Color.blend('#726AFF', '#009112', 0.7); // #228559
+	 * ```
 	 */
 	static blend(color1, color2, percentage) {
 		const int_to_hex = function(num) {
@@ -53,13 +61,21 @@ class Color {
 			(1 - percentage) * color1[1] + percentage * color2[1],
 			(1 - percentage) * color1[2] + percentage * color2[2]
 		];
-		color3 = '#' + int_to_hex(color3[0]) + int_to_hex(color3[1]) + int_to_hex(color3[2]);
+		color3 = '#' + color3.map(int_to_hex).join('')
 		return color3;
 	}
 
 	/**
+	 * @description Given an HEX Color as input, this function will invert the color; #012345 --> #FEDCBA
 	 * @param {string} hexColor Hex color to invert
 	 * @returns {string} Hex color
+	 * 
+	 * __Example__
+	 * ```js
+	 * Color.invert('#CC3300'); // #33CCFF
+	 * Color.invert('#FFD2C4'); // #002D3B
+	 * Color.invert('#228559'); // #DD7AA6
+	 * ```
 	 */
 	static invert(hexColor) {
 		if (hexColor.length != 4 && hexColor.length != 7)
@@ -78,6 +94,7 @@ class Color {
 	}
 
 	/**
+	 * @no_docs
 	 * @param {string} hexColor Hex color to invert
 	 * @returns {string} Hex color
 	 */
@@ -86,8 +103,32 @@ class Color {
 	}
 
 	/**
+	 * @description This function will convert all of the 3 digits HEX Colors into a 6 digits
+	 * @param {string} hex 3 or 6 digit HEX Color
+	 * @returns {string} Returns a 6 digit HEX Color
+	 * 
+	 * __Example__
+	 * ```js
+	 * Color.fullhex('#FA0'); // #FFAA00
+	 * Color.fullhex('#123456'); // #123456
+	 * ```
+	 */
+	static fullhex(hex) {
+		let c = hex.replace('#', '');
+		return `#${(c.length == 6) ? c : c.split('').map((i) => i+i).join('')}`;
+	}
+
+	/**
+	 * @description Transform the given HEX Color into the same color as [r, g, b]
 	 * @param {string} hexColor Hex color to transform to RGB
 	 * @returns {Array<r,g,b>} RGB Value of the given hex
+	 * 
+	 * __Example__
+	 * ```js
+	 * Color.hex2rgb('#33CCFF'); // [51, 204, 255]
+	 * Color.hex2rgb('#002D3B'); // [0, 45, 59]
+	 * Color.hex2rgb('#DD7AA6'); // [221, 122, 166]
+	 * ```
 	 */
 	static hex2rgb(hex) {
 		if (hex.length != 4 && hex.length != 7)
@@ -102,11 +143,18 @@ class Color {
 	}
 
 	/**
-	 * 
+	 * @description Transform the given RGB Color into the same color with the HEX format
 	 * @param {int} r R value for the color
 	 * @param {int} g G value for the color
 	 * @param {int} b B value for the color
 	 * @returns {string} Hex color from the given RGB values
+	 * 
+	 * __Example__
+	 * ```js
+	 * Color.rgb2hex(51, 204, 255); // #33CCFF
+	 * Color.rgb2hex(0, 45, 59); // #002D3B
+	 * Color.rgb2hex(...[221, 122, 166]); // #DD7AA6
+	 * ```
 	 */
 	static rgb2hex(r, g, b) {
 		if (!(r >= 0 && r <= 255)) { throw new Error(`Red value must be between 0 and 255, received ${r}`); }
@@ -117,9 +165,22 @@ class Color {
 	}
 
 	/**
+	 * @description Apply a Lighter/Darker shade at the given color;
 	 * @param {string} color Hex of the color 
 	 * @param {float} percentage Percentage of Brightness/Shade to apply (positive for brightness, negative for shade)
 	 * @returns {string} Hex color with the given filter
+	 * 
+	 * 1. if percentage is 0: return the given color
+	 * 2. between 0 and 1: color goes to the given one to white
+	 * 3. between 0 and -1: color goes to the given one to black
+	 * 
+	 * 
+	 * __Example__
+	 * ```js
+	 * console.log(Color.shade('#33CCFF', -0.7)); // #0f3d4d
+	 * console.log(Color.shade('#002D3B', 0.2));  // #335762
+	 * console.log(Color.shade('#DD7AA6', 0.5));  // #eebdd3 
+	 * ```
 	 */
 	static shade(color, percentage) {
 		if (!(percentage >= -1 && percentage <= 1)) { throw new Error('Percentage must be between -1 and 1')}
@@ -130,5 +191,32 @@ class Color {
 			return this.blend(color, '#000000', Math.abs(percentage));
 		}
 		return color;
+	}
+
+	/**
+	 * @description Show in the console a box with the color passed, with the text in both white and black colors
+	 * @param {string | int} hex Hex of the color to display or __RED__ color of RGB Value
+	 * @param  {...int} ...gb __GREEN__ and __BLUE__ values of the color into separate arguments (or with spread operator "...[g, b]")
+	 * 
+	 * __Example__
+	 * ```js
+	 * Color.logColor('#FFAA00');
+	 * Color.logColor(200, 50, 100);
+	 * ```
+	 */
+	static logColor(hex, ...gb) {
+		const consoleColor = (c) => {
+			const common = 'padding: 15px 100px; font-size: 30px; text-align: center;';
+			const s1 = `${common} background-color: ${c}; color: #FFF; border-right: 1px solid #FFF;`
+			const s2 = `${common} background-color: ${c}; color: #000; border-left: 1px solid #000;`
+			console.log(`%c${c}%c${c}`, s1, s2);
+		}
+		if (gb.length == 0) {
+			consoleColor(this.fullhex(hex));
+		}
+		else if (gb.length == 2) {
+			hex = this.rgb2hex(hex, ...gb)
+			consoleColor(this.fullhex(hex));
+		}
 	}
 }

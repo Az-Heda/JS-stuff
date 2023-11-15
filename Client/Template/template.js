@@ -29,6 +29,7 @@ class $MissingData extends Error {
 class Templating {
 	/**
 	 * @param {string} template HTML Template to save
+	 * @param {object} data Data to fill the placeholders inside of the template
 	 * @return {Templating}
 	 */
 	constructor(template, data) {
@@ -65,6 +66,9 @@ class Templating {
 		if (this.#_checkForTemplate(false)) this.parse();
 	}
 
+	/**
+	 * @returns {string} Template with the data applied in the placeholders
+	 */
 	parse() {
 		this.#_checkForTemplate();
 		this.#_checkForData();
