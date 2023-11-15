@@ -45,7 +45,7 @@ document.body.innerHTML = t.template;
 ## WARNING
 All of the keys of the object used to write the data, __MUST__ follow this RegEx:
 ```js
-/\$\%([ ]{0,})([a-zA-Z0-9_]{1,})([ ]{0,})\%\$/
+/[a-zA-Z0-9_]{1,}/
 ```
 Click [HERE](https://regexr.com/7n8m9) to try online this RegEx
 ### Regex explanation
