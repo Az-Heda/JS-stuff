@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<style>
+			:root {
+				--color: #FA0;
+				--outer: 3px;
+				--innner: 1px;
+			}
+			table {
+				border: var(--outer) solid var(--color);
+				width: 100%;
+			}
+			th {
+				border-bottom: var(--outer) solid var(--color);
+			}
+
+			table tr td, table tr th {
+				text-align: center;
+			}
+			td:not(:last-child), th:not(:last-child) {
+				border-right: var(--innner) solid var(--color);
+			}
+
+			tr:not(:last-child) td {
+				border-bottom: var(--innner) solid var(--color)
+			}
+
+			.resource-url {
+				text-decoration: none;
+				color: #000;
+			}
+			
+			.resource-url:hover {
+				text-decoration: underline;
+			}
+
+		</style>
+		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/DevTools/devtools.js"></script>
+		<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Tag/tag.js"></script>
+	</head>
+	<body>
+		<table id="resources"></table>
+		<script>
+			(function createTable() {
+				let container = document.querySelector('#resources');
+				container.innerHTML = '';
+				let th = new Tag('thead').appendTo(container);
+				let tb = new Tag('tbody').appendTo(container);
+
+				let trh = new Tag('tr').appendTo(th.node);
+				new Tag('th').text('Type').appendTo(trh.node)
+				new Tag('th').text('Code').appendTo(trh.node)
+				new Tag('th').text('Url').appendTo(trh.node)
+				
+				for (let resource of top.performance.getEntriesByType('resource')) {
+					let tr = new Tag('tr').appendTo(tb.node);
+					new Tag('td').text(resource.initiatorType).appendTo(tr.node);
+					new Tag('td').text(resource.responseStatus).appendTo(tr.node);
+					let cell = new Tag('td').appendTo(tr.node);
+					new Tag('a')
+						.text(resource.name)
+						.addAttr('href', resource.name)
+						.addAttr('target', '_blank')
+						.addClass('resource-url')
+						.appendTo(cell.node)
+				}
+				setTimeout(createTable, 1000)
+			})()
+		</script>
+	</body>
+</html>
