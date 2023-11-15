@@ -89,13 +89,15 @@ module.exports = WebServer;
 
 
 
-WebServer.data = {};
-WebServer.addRoute = (method, path, cb) => {
-	app[method](path, (req, res) => cb({ req, res }, data));
-};
+// WebServer.data = {}; // Passed by reference, allow this to auto-update when changed in a callback
+// WebServer.addRoute = (method, path, cb) => {
+// 	if (['get', 'post'].includes(method.toLowerCase())) {
+// 		app[method.toLowerCase()](path, (req, res) => cb({ req, res }, data));
+// 	}
+// };
 
-function callback (connection, data ) {
-	const { req, res } = connection;
-	console.log(data);
-}
-WebServer.addRoute('get', '/path', callback)
+// function callback (connection, data ) {
+// 	const { req, res } = connection;
+// 	console.log(data);
+// }
+// WebServer.addRoute('get', '/path', callback)
