@@ -30,7 +30,7 @@ function generate(fname) {
 			if (md.length > 0) {
 				lines.push(`${i+1}. [${f.split('/')[1]}](${md[0]})`)
 			} else {
-				lines.push(`${i+1}. ${f.split('/')[1]} (__Not working yet__)`)
+				// lines.push(`${i+1}. ${f.split('/')[1]} (__Not vlaid__)`)
 			}
 		})
 		if (dir[0] == 'Server') {
