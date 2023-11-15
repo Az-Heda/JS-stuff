@@ -84,3 +84,18 @@ function sendLog(...args) {
 }
 
 module.exports = WebServer;
+
+
+
+
+
+WebServer.data = {};
+WebServer.addRoute = (method, path, cb) => {
+	app[method](path, (req, res) => cb({ req, res }, data));
+};
+
+function callback (connection, data ) {
+	const { req, res } = connection;
+	console.log(data);
+}
+WebServer.addRoute('get', '/path', callback)
