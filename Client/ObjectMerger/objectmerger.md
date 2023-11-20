@@ -1,4 +1,4 @@
-# merger
+# Merger
 
 [Homepage](../../README.md)
 
