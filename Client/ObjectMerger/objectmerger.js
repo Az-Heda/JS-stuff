@@ -5,6 +5,8 @@
  */
 function Merger(source, replacer) {
 	if (!replacer) return source;
+	source = structuredClone(source);
+	replacer = structuredClone(replacer);
 	let newObject = {};
 	for (let [k, v] of Object.entries(source)) {
 		newObject[k] = (v.constructor.name !== 'Object')
