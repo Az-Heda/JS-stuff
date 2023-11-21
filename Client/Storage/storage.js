@@ -19,7 +19,7 @@ class MyStorage {
 	 */
 	static add(key, value) {
 		if (this.isStorageEnable) {
-			window.localStorage.setItem(key, this.#_packer = value);
+			window.localStorage.setItem(key, value);
 			return this.hasKey(key);
 		}
 		return false;
@@ -46,7 +46,7 @@ class MyStorage {
 	static get(key) {
 		if (this.isStorageEnable) {
 			if (this.hasKey(key)) {
-				return this.#_unpacker = window.localStorage.getItem(key);
+				return window.localStorage.getItem(key);
 			}
 		}
 		return false;
@@ -110,13 +110,5 @@ class MyStorage {
 			return item.value;
 		}
 		return false;
-	}
-
-	static set #_packer(val) {
-		return JSON.stringify({ content: val });
-	}
-
-	static set #_unpacker(val) {
-		return JSON.parse(val).content;
 	}
 }
