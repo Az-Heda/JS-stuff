@@ -46,7 +46,7 @@ class MyStorage {
 	static get(key) {
 		if (this.isStorageEnable) {
 			if (this.hasKey(key)) {
-				return this.#_unpacker(window.localStorage.getItem(key));
+				return this.#_unpacker = window.localStorage.getItem(key);
 			}
 		}
 		return false;
