@@ -5,11 +5,11 @@
 ## Import
 ### CDN JSDeliver
 ```html
-<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Theme/theme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/CustomTheme/theme.js"></script>
 ```
 ### Unpkg
 ```html
-<script src="https://unpkg.com/azheda-utils-v2@latest/Client/Theme/theme.js"></script>
+<script src="https://unpkg.com/azheda-utils-v2@latest/Client/CustomTheme/theme.js"></script>
 ```
 
 ## Usage
