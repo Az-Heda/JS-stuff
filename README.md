@@ -16,9 +16,10 @@
 13. [Swap](Client/Swap/swap.md)
 14. [Tag](Client/Tag/tag.md)
 15. [Template](Client/Template/template.md)
-16. [Time](Client/Time/time.md)
-17. [Utils](Client/Utils/utils.md)
-18. [_css](Client/_css/grid.md)
+16. [Theme](Client/Theme/theme.md)
+17. [Time](Client/Time/time.md)
+18. [Utils](Client/Utils/utils.md)
+19. [_css](Client/_css/grid.md)
 
 # Server (__BETA__)
 
