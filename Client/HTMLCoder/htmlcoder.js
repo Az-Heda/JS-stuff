@@ -29,18 +29,19 @@ class HTMLCoder {
 	 * @param {string} b64 String of the saved HTMLElement
 	 * @returns {HTMLElement} HTMLElement associated with the given input string
 	 */
-	static async load(b64) {
+	static async load(b64, parent=null) {
 		let data = this.#_base64UrlToArrayBuffer(b64);
 		let htmlElement = JSON.parse(await this.#_decompress(data));
-		return Promise.resolve(this.#_tagParser(htmlElement))
+		return Promise.resolve(this.#_tagParser(htmlElement, parent))
 	}
 
 
 	static #_tagParser(htmlElements, parent=null) {
 		if (!htmlElements.isText) {
+			console.log(htmlElements)
 			let tag = document.createElement(htmlElements.tag)
 			for (const [k, v] of Object.entries(htmlElements?.attributes || {})) { tag.setAttribute(k, v); }
-			for (let [ck, cv] of Object.entries(htmlElements.children || {})) { this.#_tagParser(cv, tag); }
+			for (let [_, cv] of Object.entries(htmlElements.children || {})) { this.#_tagParser(cv, tag); }
 			if (parent !== null) { parent.appendChild(tag); }
 			return tag;
 		}

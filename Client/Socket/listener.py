@@ -2,7 +2,6 @@ import websockets
 import asyncio
 import json
 
-
 class WSType:
 	def send (value : str):
 		""" Send a string the the user id """
