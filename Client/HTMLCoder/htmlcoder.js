@@ -27,6 +27,7 @@ class HTMLCoder {
 
 	/**
 	 * @param {string} b64 String of the saved HTMLElement
+	 * @param {HTMLElement} parent HTMLElement of the parent to auto append the returned tag
 	 * @returns {HTMLElement} HTMLElement associated with the given input string
 	 */
 	static async load(b64, parent=null) {
@@ -90,3 +91,17 @@ class HTMLCoder {
 		return bytes.buffer;
 	}
 }
+
+// let obj = {}
+// window.getComputedStyle(x)
+// for (let [k,v] of Object.entries(window.getComputedStyle(x))) {
+// 	let conditions = [
+// 		isNaN(+k),
+// 		v.length > 0,
+// 		v.indexOf(' ') == -1,
+// 		!['auto', '0', '0px', 'inherit', 'normal', 'none'].includes(v),
+// 		!k.startsWith('webkit')
+// 	].every((e) => { return e })
+//     if (conditions) { obj[k] = v }
+// }
+// obj
