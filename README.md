@@ -19,8 +19,9 @@
 16. [Tag](Client/Tag/tag.md)
 17. [Template](Client/Template/template.md)
 18. [Time](Client/Time/time.md)
-19. [Utils](Client/Utils/utils.md)
-20. [_css](Client/_css/grid.md)
+19. [TreePath](Client/TreePath/tree.md)
+20. [Utils](Client/Utils/utils.md)
+21. [_css](Client/_css/grid.md)
 
 # Server (__BETA__)
 
