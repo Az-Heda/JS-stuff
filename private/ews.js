@@ -3,17 +3,19 @@ const cors = require('cors');
 
 const ctx = (() => {
 	let archive = {
-		
 		permission: {
 			addWithHas: true
 		}
 	}
+
 	return new Proxy(archive, {
-		get(target, key) {
+		get(target, key) { // ctx.<key>
 			return (Object.keys(target).includes(key)) ? target[key] : undefined;
 		},
-		set(target, key, value) {
-			target[key] = value;
+		set(target, key, value) { // ctx.<key> = <value>
+			if (!key.startsWith('#_')) {
+				target[key] = value;
+			}
 			return target[key] == value;
 		},
 		has(target, key) { // <variable> in ctx
@@ -22,11 +24,12 @@ const ctx = (() => {
 			}
 			return Object.keys(target).includes(key);
 		},
-		ownKeys(target) {
+		ownKeys(target) { // Object.keys(ctx) || Object.getOwnPropertyNames(ctx)
 			return Object.keys(target);
 		}
 	})
 })();
+
 
 class ews {
 	#_functions = {};
@@ -40,8 +43,20 @@ class ews {
 		this.#_readonly('app', express());
 		this.#_readonly('server', this.app.listen(this.port, this.host, this.logger))
 		
-		this.#_functions['route'] = (path, callback) => {
-			
+		this.#_init();
+	}
+
+
+	route(path, methods, callback) {
+		if (methods.constructor.name === 'String') {
+			methods = [methods];
+		}
+		methods = methods.map(m => m.toLowerCase());
+
+		for (const method of methods) {
+			if (['get', 'post'].includes(method)) {
+				this.app[method](path, (req, res) => { callback(req, res, ctx) });
+			}
 		}
 	}
 
@@ -50,7 +65,6 @@ class ews {
 			this.#_readonly(fname, fbody);
 		}
 	}
-
 
 	#_readonly(name, value, cb=null) {
 		Object.defineProperty(this, name, {
