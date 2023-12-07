@@ -42,9 +42,9 @@ console.log(rng.nextRange(100, 200)); // 108
 
 ### .color()
 ```js
-	console.log(rng.color()); // #E3F62B
-	console.log(rng.color()); // #392B81
-	console.log(rng.color()); // #6F90BA
+console.log(rng.color()); // #E3F62B
+console.log(rng.color()); // #392B81
+console.log(rng.color()); // #6F90BA
 ```
 
 ### .choice(array)
@@ -59,17 +59,17 @@ console.log(rng.choice(arr)); // Grape
 ### .generator(functionName, ...params)
 All of the previous functions can be transformed into a generator by doing this
 ```js
-	let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWYZ'.split('');
+let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWYZ'.split('');
 
-	let g1 = rng.generator('nextInt');
-	let g2 = rng.generator('nextFloat');
-	let g3 = rng.generator('nextRange', 1, 1000);
-	let g4 = rng.generator('color');
-	let g5 = rng.generator('choice', alphabet);
+let g1 = rng.generator('nextInt');
+let g2 = rng.generator('nextFloat');
+let g3 = rng.generator('nextRange', 1, 1000);
+let g4 = rng.generator('color');
+let g5 = rng.generator('choice', alphabet);
 
-	console.log(g1.next()); // {value: 1348002560, done: false}
-	console.log(g2.next()); // {value: 0.7266491654918759, done: false}
-	console.log(g3.next()); // {value: 513, done: false}
-	console.log(g4.next()); // {value: '#3FABB4', done: false}
-	console.log(g5.next()); // {value: 'Z', done: false}
+console.log(g1.next()); // {value: 1348002560, done: false}
+console.log(g2.next()); // {value: 0.7266491654918759, done: false}
+console.log(g3.next()); // {value: 513, done: false}
+console.log(g4.next()); // {value: '#3FABB4', done: false}
+console.log(g5.next()); // {value: 'Z', done: false}
 ```
