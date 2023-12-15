@@ -1,0 +1,305 @@
+:root {
+	--bg:                                          #242526; /* rgb(36, 37, 38) | hsl(210, 3%, 15%)      */
+	--ifm-color-primary:                           #25c2a0; /* rgb(37, 194, 160)  | hsl(167, 68%, 45%)  */
+	--ifm-color-content-secondary:                 #525860; /* rgb(82, 88, 96)    | hsl(214, 8%, 35%)   */
+	/* --ifm-color-primary:                           #3578e5; /* rgb(53, 120, 229) | hsl(217, 77%, 55%)   */
+	--ifm-color-secondary:                         #ebedf0; /* rgb(235, 237, 240) | hsl(216, 14%, 93%)  */
+	--ifm-color-success:                           #00a400; /* rgb(0, 164, 0)     | hsl(120, 100%, 32%) */
+	--ifm-color-info:                              #54c7ec; /* rgb(84, 199, 236)  | hsl(195, 80%, 63%)  */
+	--ifm-color-warning:                           #ffba00; /* rgb(255, 186, 0)   | hsl(44, 100%, 50%)  */
+	--ifm-color-danger:                            #fa383e; /* rgb(250, 56, 62)   | hsl(358, 95%, 60%)  */
+	--ifm-color-primary-lightest:                  #9abcf2; /* rgb(154, 188, 242) | hsl(217, 77%, 78%)  */
+	--ifm-color-primary-lighter:                   #72a1ed; /* rgb(114, 161, 237) | hsl(217, 77%, 69%)  */
+	--ifm-color-primary-light:                     #538ce9; /* rgb(83, 140, 233)  | hsl(217, 77%, 62%)  */
+	--ifm-color-primary-dark:                      #306cce; /* rgb(48, 108, 206)  | hsl(217, 62%, 50%)  */
+	--ifm-color-primary-darker:                    #2d66c3; /* rgb(45, 102, 195)  | hsl(217, 62%, 47%)  */
+	--ifm-color-primary-darkest:                   #2655a1; /* rgb(38, 85, 161)   | hsl(217, 62%, 39%)  */
+	--ifm-color-primary-contrast-foreground:       #12294e; /* rgb(18, 41, 78)    | hsl(217, 63%, 19%)  */
+	--ifm-color-primary-contrast-background:       #b1c8ed; /* rgb(177, 200, 237) | hsl(217, 63%, 81%)  */
+	--ifm-color-secondary-lightest:                #f5f6f8; /* rgb(245, 246, 248) | hsl(220, 18%, 97%)  */
+	--ifm-color-secondary-lighter:                 #f1f2f5; /* rgb(241, 242, 245) | hsl(225, 17%, 95%)  */
+	--ifm-color-secondary-light:                   #eef0f2; /* rgb(238, 240, 242) | hsl(210, 13%, 94%)  */
+	--ifm-color-secondary-dark:                    #d4d5d8; /* rgb(212, 213, 216) | hsl(225, 5%, 84%)   */
+	--ifm-color-secondary-darker:                  #c8c9cc; /* rgb(200, 201, 204) | hsl(225, 4%, 79%)   */
+	--ifm-color-secondary-darkest:                 #a4a6a8; /* rgb(164, 166, 168) | hsl(210, 2%, 65%)   */
+	--ifm-color-secondary-contrast-foreground:     #2f3031; /* rgb(47, 48, 49)    | hsl(210, 2%, 19%)   */
+	--ifm-color-secondary-contrast-background:     #cecfd0; /* rgb(206, 207, 208) | hsl(210, 2%, 81%)   */
+	--ifm-color-success-lightest:                  #80d280; /* rgb(128, 210, 128) | hsl(120, 48%, 66%)  */
+	--ifm-color-success-lighter:                   #4dbf4d; /* rgb(77, 191, 77)   | hsl(120, 47%, 53%)  */
+	--ifm-color-success-light:                     #26b226; /* rgb(38, 178, 38)   | hsl(120, 65%, 42%)  */
+	--ifm-color-success-dark:                      #009400; /* rgb(0, 148, 0)     | hsl(120, 100%, 29%) */
+	--ifm-color-success-darker:                    #008b00; /* rgb(0, 139, 0)     | hsl(120, 100%, 27%) */
+	--ifm-color-success-darkest:                   #007300; /* rgb(0, 115, 0)     | hsl(120, 100%, 23%) */
+	--ifm-color-success-contrast-foreground:       #006100; /* rgb(0, 97, 0)      | hsl(120, 100%, 19%) */
+	--ifm-color-success-contrast-background:       #9eff9e; /* rgb(158, 255, 158) | hsl(120, 100%, 81%) */
+	--ifm-color-info-lightest:                     #aae3f6; /* rgb(170, 227, 246) | hsl(195, 81%, 82%)  */
+	--ifm-color-info-lighter:                      #87d8f2; /* rgb(135, 216, 242) | hsl(195, 80%, 74%)  */
+	--ifm-color-info-light:                        #6ecfef; /* rgb(110, 207, 239) | hsl(195, 80%, 68%)  */
+	--ifm-color-info-dark:                         #4cb3d4; /* rgb(76, 179, 212)  | hsl(195, 61%, 56%)  */
+	--ifm-color-info-darker:                       #47a9c9; /* rgb(71, 169, 201)  | hsl(195, 55%, 53%)  */
+	--ifm-color-info-darkest:                      #3b8ba5; /* rgb(59, 139, 165)  | hsl(195, 47%, 44%)  */
+	--ifm-color-info-contrast-foreground:          #1a3c47; /* rgb(26, 60, 71)    | hsl(195, 46%, 19%)  */
+	--ifm-color-info-contrast-background:          #b8dae5; /* rgb(184, 218, 229) | hsl(195, 46%, 81%)  */
+	--ifm-color-warning-lightest:                  #ffdd80; /* rgb(255, 221, 128) | hsl(44, 100%, 75%)  */
+	--ifm-color-warning-lighter:                   #ffcf4d; /* rgb(255, 207, 77)  | hsl(44, 100%, 65%)  */
+	--ifm-color-warning-light:                     #ffc426; /* rgb(255, 196, 38)  | hsl(44, 100%, 57%)  */
+	--ifm-color-warning-dark:                      #e6a700; /* rgb(230, 167, 0)   | hsl(44, 100%, 45%)  */
+	--ifm-color-warning-darker:                    #d99e00; /* rgb(217, 158, 0)   | hsl(44, 100%, 43%)  */
+	--ifm-color-warning-darkest:                   #b38300; /* rgb(179, 131, 0)   | hsl(44, 100%, 35%)  */
+	--ifm-color-warning-contrast-foreground:       #614700; /* rgb(97, 71, 0)     | hsl(44, 100%, 19%)  */
+	--ifm-color-warning-contrast-background:       #ffe59e; /* rgb(255, 229, 158) | hsl(44, 100%, 81%)  */
+	--ifm-color-danger-lightest:                   #fd9c9f; /* rgb(253, 156, 159) | hsl(358, 96%, 80%)  */
+	--ifm-color-danger-lighter:                    #fb7478; /* rgb(251, 116, 120) | hsl(358, 94%, 72%)  */
+	--ifm-color-danger-light:                      #fb565b; /* rgb(251, 86, 91)   | hsl(358, 95%, 66%)  */
+	--ifm-color-danger-dark:                       #e13238; /* rgb(225, 50, 56)   | hsl(358, 74%, 54%)  */
+	--ifm-color-danger-darker:                     #d53035; /* rgb(213, 48, 53)   | hsl(358, 66%, 51%)  */
+	--ifm-color-danger-darkest:                    #b0272b; /* rgb(176, 39, 43)   | hsl(358, 64%, 42%)  */
+	--ifm-color-danger-contrast-foreground:        #4f1114; /* rgb(79, 17, 20)    | hsl(357, 65%, 19%)  */
+	--ifm-color-danger-contrast-background:        #eeb0b2; /* rgb(238, 176, 178) | hsl(358, 65%, 81%)  */
+	--ifm-color-primary-lightest:                  #92e0d0; /* rgb(146, 224, 208) | hsl(168, 56%, 73%)  */
+	--ifm-color-primary-lighter:                   #66d4bd; /* rgb(102, 212, 189) | hsl(167, 56%, 62%)  */
+	--ifm-color-primary-light:                     #46cbae; /* rgb(70, 203, 174)  | hsl(167, 56%, 54%)  */
+	--ifm-color-primary-dark:                      #21af90; /* rgb(33, 175, 144)  | hsl(167, 68%, 41%)  */
+	--ifm-color-primary-darker:                    #1fa588; /* rgb(31, 165, 136)  | hsl(167, 68%, 38%)  */
+	--ifm-color-primary-darkest:                   #1a8971; /* rgb(26, 137, 113)  | hsl(167, 68%, 32%)  */
+	--ifm-color-primary-contrast-foreground:       #105143; /* rgb(16, 81, 67)    | hsl(167, 67%, 19%)  */
+	--ifm-color-primary-contrast-background:       #aeefe1; /* rgb(174, 239, 225) | hsl(167, 67%, 81%)  */
+	--ifm-color-gray-0:                            #ffffff; /* rgb(255, 255, 255) | hsl(0, 0%, 100%)    */
+	--ifm-color-gray-100:                          #f5f6f7; /* rgb(245, 246, 247) | hsl(210, 11%, 96%)  */
+	--ifm-color-gray-200:                          #ebedf0; /* rgb(235, 237, 240) | hsl(216, 14%, 93%)  */
+	--ifm-color-gray-300:                          #dadde1; /* rgb(218, 221, 225) | hsl(214, 10%, 87%)  */
+	--ifm-color-gray-400:                          #ccd0d5; /* rgb(204, 208, 213) | hsl(213, 10%, 82%)  */
+	--ifm-color-gray-500:                          #bec3c9; /* rgb(190, 195, 201) | hsl(213, 9%, 77%)   */
+	--ifm-color-gray-600:                          #8d949e; /* rgb(141, 148, 158) | hsl(215, 8%, 59%)   */
+	--ifm-color-gray-700:                          #606770; /* rgb(96, 103, 112)  | hsl(214, 8%, 41%)   */
+	--ifm-color-gray-800:                          #444950; /* rgb(68, 73, 80)    | hsl(215, 8%, 29%)   */
+	--ifm-color-gray-900:                          #1c1e21; /* rgb(28, 30, 33)    | hsl(216, 8%, 12%)   */
+	--ifm-color-gray-1000:                         #000000; /* rgb(0, 0, 0)       | hsl(0, 0%, 0%)      */
+
+	
+
+	--font: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	--h-default-padding: 10px;
+	--card-margin: 20px;
+	--h-default-padding: 2ex;
+	--border-radius: 10px;
+}
+
+
+
+/*****************************************************************************/
+/*                                   Style                                   */
+/*****************************************************************************/
+
+
+
+body {
+	margin: 0;
+}
+
+body * {
+	font-family: var(--font);
+	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	--p: 5px;
+	/* padding: var(--p) var(--p) var(--p) calc(var(--h-default-padding) + var(--p)); */
+	padding-left: var(--h-default-padding);
+	text-transform: capitalize;
+}
+
+hr {
+	width: calc(100% - var(--card-margin));
+	height: 1px;
+	border: none;
+	margin: 10px;
+}
+
+
+div.deck {
+	--space: 20px;
+	position: relative;
+	justify-content: center;
+	align-content: flex-start;
+	flex-flow: wrap;
+	flex-wrap: wrap;
+	flex-direction: row;
+	display: flex;
+	align-items: center;
+	row-gap: var(--space);
+	column-gap: var(--space);
+}
+
+div.card {
+	max-width: calc(var(--card-size) - var(--card-margin) * 2);
+	margin: calc(var(--card-margin) / 2);
+	flex: var(--card-size);
+	text-align: justify;
+	border-radius: var(--border-radius);
+}
+
+div.card .header img {
+	width: 100%;
+	max-width: 100%;
+	max-height: 40dvh;
+	border-radius: var(--border-radius) var(--border-radius) 0;
+}
+
+div.card .header {
+	width: 100%;
+	max-width: 100%;
+}
+
+div.card > .body {
+	padding: calc(var(--card-margin) / 2);
+}
+
+
+div.card > .footer {
+	padding: calc(var(--card-margin) / 2);
+}
+
+
+
+/****************************************************************************/
+/*                                Responsive                                */
+/****************************************************************************/
+
+
+
+@media only screen and (min-width: 1200px) {
+	div.deck {
+		--space: 1%;
+	}
+	div.card {
+		--card-size: 25%;
+	}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+	div.deck {
+		--space: 0.5%;
+	}
+	div.card {
+		--card-size: 30%;
+	}
+}
+
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+	div.deck {
+		--space: 0.05%;
+	}
+	div.card {
+		--card-size: 50%;
+	}
+}
+
+@media only screen and ( max-width: 500px) {
+	div.deck {
+		--space: 10px;
+	}
+	div.card {
+		--card-size: 100%;
+	}
+}
+
+
+/****************************************************************************/
+/*                               Color Schema                               */
+/****************************************************************************/
+
+
+
+[color-schema="success"] {
+	--color-lightest: var(--ifm-color-success-lightest);
+	--color-lighter: var(--ifm-color-success-lighter);
+	--color-light: var(--ifm-color-success-light);
+	--color: var(--ifm-color-success);
+	--color-dark: var(--ifm-color-success-dark);
+	--color-darker: var(--ifm-color-success-darker);
+	--color-darkest: var(--ifm-color-success-darkest);
+	--color-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+	--color-contrast-background: var(--ifm-color-success-contrast-background);
+}
+[color-schema="info"] {
+	--color-lightest: var(--ifm-color-info-lightest);
+	--color-lighter: var(--ifm-color-info-lighter);
+	--color-light: var(--ifm-color-info-light);
+	--color: var(--ifm-color-info);
+	--color-dark: var(--ifm-color-info-dark);
+	--color-darker: var(--ifm-color-info-darker);
+	--color-darkest: var(--ifm-color-info-darkest);
+	--color-contrast-foreground: var(--ifm-color-info-contrast-foreground);
+	--color-contrast-background: var(--ifm-color-info-contrast-background);
+}
+[color-schema="warning"] {
+	--color-lightest: var(--ifm-color-warning-lightest);
+	--color-lighter: var(--ifm-color-warning-lighter);
+	--color-light: var(--ifm-color-warning-light);
+	--color: var(--ifm-color-warning);
+	--color-dark: var(--ifm-color-warning-dark);
+	--color-darker: var(--ifm-color-warning-darker);
+	--color-darkest: var(--ifm-color-warning-darkest);
+	--color-contrast-foreground: var(--ifm-color-warning-contrast-foreground);
+	--color-contrast-background: var(--ifm-color-warning-contrast-background);
+}
+[color-schema="danger"] {
+	--color-lightest: var(--ifm-color-danger-lightest);
+	--color-lighter: var(--ifm-color-danger-lighter);
+	--color-light: var(--ifm-color-danger-light);
+	--color: var(--ifm-color-danger);
+	--color-dark: var(--ifm-color-danger-dark);
+	--color-darker: var(--ifm-color-danger-darker);
+	--color-darkest: var(--ifm-color-danger-darkest);
+	--color-contrast-foreground: var(--ifm-color-danger-contrast-foreground);
+	--color-contrast-background: var(--ifm-color-danger-contrast-background);
+}
+[color-schema="primary"] {
+	--color-lightest: var(--ifm-color-primary-lightest);
+	--color-lighter: var(--ifm-color-primary-lighter);
+	--color-light: var(--ifm-color-primary-light);
+	--color: var(--ifm-color-primary);
+	--color-dark: var(--ifm-color-primary-dark);
+	--color-darker: var(--ifm-color-primary-darker);
+	--color-darkest: var(--ifm-color-primary-darkest);
+	--color-contrast-foreground: var(--ifm-color-primary-contrast-foreground);
+	--color-contrast-background: var(--ifm-color-primary-contrast-background);
+}
+[color-schema="secondary"] {
+	--color-lightest: var(--ifm-color-secondary-lightest);
+	--color-lighter: var(--ifm-color-secondary-lighter);
+	--color-light: var(--ifm-color-secondary-light);
+	--color: var(--ifm-color-secondary);
+	--color-dark: var(--ifm-color-secondary-dark);
+	--color-darker: var(--ifm-color-secondary-darker);
+	--color-darkest: var(--ifm-color-secondary-darkest);
+	--color-contrast-foreground: var(--ifm-color-secondary-contrast-foreground);
+	--color-contrast-background: var(--ifm-color-secondary-contrast-background);
+}
+
+
+
+body {
+	background-color: var(--bg);
+}
+
+body * {
+	color: var(--ifm-color-gray-300);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--color-lightest);
+	/* background-color: var(--color-darkest); */
+}
+
+hr.style0 { background-image: linear-gradient(to right, var(--color-lighter) 0%, var(--color-lighter) 100%); }
+hr.style1 { background-image: linear-gradient(to right, var(--bg) 5%, var(--color-lighter), var(--bg) 95%); }
+hr.style2 { background-image: linear-gradient(to right, var(--color-lighter) 5%, var(--bg), var(--color-lighter) 95%); }
+
+
+div.card {
+	background-color: var(--ifm-color-gray-800);
+	box-shadow: 0px 0px 10px 0px var(--color-darkest);
+}
