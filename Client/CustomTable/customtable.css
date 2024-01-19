@@ -1,0 +1,107 @@
+:root {
+	--comment: #6272a4;
+	--cyan: #8be9fd;
+	--green: #50fa7b;
+	--orange: #ffb86c;
+	--pink: #ff79c6;
+	--purple: #bd93f9;
+	--red: #ff5555;
+	--yellow: #f1fa8c;
+
+	--animation-timing: 50ms;
+}
+
+body {
+	margin: 0;
+}
+
+div#container1 {
+	position: absolute;
+	width: 80%;
+	top: 20%;
+	left: 50%;
+	translate: -50%;
+}
+div#container2 {
+	position: absolute;
+	width: 80%;
+	bottom: 20%;
+	left: 50%;
+	translate: -50%;
+}
+
+table:not([darktheme]) {
+	--first: #f8f8f2;
+	--second: #44475a;
+	--third: #282a36;
+}
+
+table[darktheme] {
+	--first: #282a36;
+	--second: #44475a;
+	--third: #f8f8f2;
+}
+
+table.custom-table {
+	width: 100%;
+	padding: 10px;
+	box-shadow: 0px 0px 5px 2px var(--third);
+}
+
+
+.custom-table {
+	background-color: var(--first);
+	color: var(--third);
+	border-collapse: collapse;
+	user-select: none;
+}
+
+.custom-table th,
+.custom-table td {
+	text-align: center;
+}
+
+.custom-table-head > tr > th:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.custom-table-head tr:last-child th {
+	border-bottom: 1px solid var(--third)
+}
+
+.custom-table-body-row-cell.empty::after {
+	content: "-"
+}
+
+.custom-table-body-row:hover {
+	transition: background-color var(--animation-timing), color var(--animation-timing);
+	background-color: var(--third);
+	color: var(--first);
+	filter: brightness(100%)
+}
+
+.custom-table-head-row-cell:not(:last-child),
+.custom-table-body-row-cell:not(:last-child),
+.custom-table-foot-row-cell:not(:last-child) {
+	border-right: 1px solid var(--third);
+}
+
+.custom-table-foot-row-cell:first-child {
+	border-top: 1px solid var(--third)
+}
+
+.custom-table-foot-left,
+.custom-table-foot-right {
+	display: inline;
+}
+
+.custom-table-foot-left {
+	float: left;
+	padding-left: 10px;
+}
+
+.custom-table-foot-right {
+	float: right;
+	padding-right: 10px;
+}

@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="customtable.css"/>
+		<script src="customtable.js"></script>
+	</head>
+	<body>
+		<div id="container1"></div>
+		<div id="container2"></div>
+		<script>
+			let keys = 'ABCDEFGHIKLLMNOPQRSTUVWXYZ'.split('');
+			function generateData(e, i) {
+				let offset = 3;
+				let keyCopy = structuredClone(keys);
+				let keyCount = Math.floor(Math.random() * (keyCopy.length - offset)) + offset;
+				let obj = {};
+				for (let pos = 0; pos < keyCount; pos ++) {
+					let val = keyCopy.splice(Math.floor(Math.random() * keyCopy.length), 1)
+					obj[val] = (Math.random() * 200) - 100;
+				}
+				return obj
+			}
 
+			let d1 = [...new Array(1e4).fill(0).map(generateData) ];
+			let d2 = [...new Array(1e4).fill(0).map(generateData) ];
+			console.log(d1);
+			console.log(d2)
+			let x = new CustomTable({ darkTheme: false, data: d1 }, document.getElementById('container1'))
+			// let y = new CustomTable({ darkTheme: true, pagination_itemPerPage: 5 }, document.getElementById('container2'))
+		</script>
+	</body>
+</html>
