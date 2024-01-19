@@ -25,7 +25,8 @@ class RandomNumberGenerator {
 				return this.nextInt() / (this.m - 1);
 			},
 			'nextRange': (start, end) => {
-				start = [Math.min(start, end), end = Math.max(start, end)][0]
+				start = Math.min(start, end)
+				end = Math.max(start, end)
 				let rangeSize = end - start;
 				let randomUnder1 = this.nextInt() / this.m;
 				return start + Math.floor(randomUnder1 * rangeSize);

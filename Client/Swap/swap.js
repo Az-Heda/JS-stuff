@@ -55,7 +55,7 @@ class Swappable {
 	}
 
 	static #_generateID() {
-		return `Swappable-auto-id-${(new Date()).getTime() * Math.random()}`;
+		return `Swappable-auto-id-${Math.floor((new Date()).getTime() * Math.random())}`;
 	}
 
 	static #_getFunction(n) {

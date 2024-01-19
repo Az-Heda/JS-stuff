@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="theme.css"/>
+		<script src="https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Tag/tag.js"></script>
+		<script>
+			const lorem = 'ac tincidunt vitae semper quis lectus nulla at volutpat diam ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam non nisi est sit amet facilisis magna etiam tempor orci eu lobortis elementum nibh tellus molestie nunc non blandit massa enim nec dui nunc mattis enim ut tellus elementum sagittis vitae et leo duis ut diam quam nulla porttitor massa id neque aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum'.substr(0, 200);
+			const colorSchema = Object.freeze([ '_green', '_lightblue', '_yellow', '_red', '_tile', '_white', '_pink' ]);
+			function generate(color, i) {
+				let options = [...colorSchema.keys()];
+				let container = new Tag('div').addAttr('color-schema', color).appendTo(document.body);
+				let title = new Tag('h2').text(color).appendTo(container.node);
+				for (let x in [...new Array(3).keys()] ) {
+					let hr = new Tag('hr').addClass(`style${x}`).appendTo(container.node);
+				}
+				let deck = new Tag('div').addClass('deck').appendTo(container.node);
+				[...new Array(options[i] + 1).keys() ].map(() => {
+					let card = new Tag('div').addClass('card').appendTo(deck.node);
+					let header = new Tag('div').addClass('header').appendTo(card.node);
+					let body = new Tag('div').addClass('body').appendTo(card.node).text(lorem.substr(0, Math.floor(Math.random() * lorem.length)));
+					let footer = new Tag('div').addClass('footer').appendTo(card.node);
+					
+					new Tag('img').addAttr('src', 'test.jpg').appendTo(header.node);
+					let x = new Tag('hr').addClass(`style0`).appendTo(header.node);
+
+					new Tag('hr').addClass('style0').appendTo(footer.node);
+					new Tag('div').addClass('align-left').text('2023/8/10').appendTo(footer.node);
+					new Tag('div').addClass('align-right').text(new Date(Date.now()).toISOString().substr(11, 8)).appendTo(footer.node);
+
+				});
+				let pagination = new Tag('div').addClass('pagination').appendTo(container.node);
+				for (let j = 0; j < i+1; j ++) {
+					let page = new Tag('div').addClass('page').text(j+1).appendTo(pagination.node);
+				}
+			}
+
+			window.addEventListener('load', () => {
+				colorSchema.forEach(generate);
+			});
+		</script>
+	</head>
+	<body>
+		<nav color-schema="_green" class="navbar left">
+			<a href="https://example.com">Link #1</a>
+			<a href="https://example.com">Link #2</a>
+			<a href="https://example.com">Link #3</a>
+			<a href="https://example.com">Link #4</a>
+		</nav>
+	</body>
+</html>

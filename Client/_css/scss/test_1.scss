@@ -1,0 +1,32 @@
+@use "sass:math";
+
+$primary:   #c084fc;
+$secondary: #22d3ee;
+$accent:    #10b981;
+$neutral:   #d1d5db;
+$base-100:  #374151;
+$info:      #3b82f6;
+$success:   #a3e635;
+$warning:   #facc15;
+$error:     #ef4444;
+
+$theme-colors: $primary, $secondary, $accent, $info, $success, $warning, $error;
+
+@mixin contentColors($bg, $tx) {
+	background-color: $bg;
+	color: $tx;
+}
+
+body {
+	$c: darken($base-100, 10%);
+	background-color: $c;
+}
+
+$pointer: 0;
+$end: 100;
+@while $pointer < $end {
+	$pointer: $pointer + 1;
+	.test-\[#{$pointer}\] {
+		@include contentColors(darken($primary, $pointer), #000000);
+	}
+}

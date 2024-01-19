@@ -1,5 +1,5 @@
 class MyStorage {
-	static #_defaultExpr = 1000 * 60 * 60 * 24;
+	static _defaultExpr = 1000 * 60 * 60 * 24;
 
 	/**
 	 * @return {boolean} Check if LocalStorage is enabled on the current browser
@@ -82,7 +82,7 @@ class MyStorage {
 	 */
 	static setCookie(key, value, expr) {
 		if (this.isStorageEnable) {
-			if (!expr) { expr = this.#_defaultExpr; }
+			if (!expr) { expr = this._defaultExpr; }
 			key = `cookie-${key}`;
 			const now = new Date();
 			const item = { value, expiry: now.getTime() + expr };
