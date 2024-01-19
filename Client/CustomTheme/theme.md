@@ -45,7 +45,7 @@ The colors must follow one of these patterns:
 ### Add CSS Rules
 Properties supported for each key are:
 | Key |                 Meaning                 |
-| --- | :-------------------------------------: |
+| :-: | :-------------------------------------- |
 | c   | color: \<value\>;                       |
 | b   | background-color: \<value\>;            |
 | ci  | color: \<value\> !important;            |
