@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script>
+			const ctx = (() => {
+				let archive = {
+					$permission: {
+						addWithHas: true
+					},
+				}
+				
+				return new Proxy(archive, {
+					get(target, key) { // ctx.<key> | ctx['<key>']
+						return (Object.keys(target).includes(key)) ? target[key] : undefined;
+					},
+					set(target, key, value) { // ctx.<key> = <value>
+						if (!key.startsWith('$')) {
+							target[key] = value;
+							console.log('Added')
+						}
+						return Object.keys(target).includes(key);
+					},
+					has(target, key) { // <variable> in ctx
+						try {
+							let tempList = JSON.parse(key.replace(new RegExp('(?<key>[a-zA-Z1-9]{1,}),(?<value>[a-zA-Z1-9]{1,})'), '["$<key>", "$<value>"]'));
+								if (target.$permission.addWithHas && tempList.length == 2) {
+									let [k, v] = tempList;
+									target[`$_${k}`] = v;
+									return Object.keys(target).includes(k);
+								}
+						} catch {}
+						return Object.keys(target).includes(key);
+					},
+					ownKeys(target) { // Object.keys(ctx) || Object.getOwnPropertyNames(ctx)
+						return Object.keys(target);
+					},
+					deleteProperty(target, k) {
+						return !k.startsWith('$')
+					},
+					enumerate: (target) => {
+						return [1, 2, 3]
+					}
+				})
+			})();
+
+		</script>
+	</head>
+	<body>
+		<script>document.write(document.location.href)</script>
+	</body>
+</html>
