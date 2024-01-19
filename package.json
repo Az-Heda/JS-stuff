@@ -1,39 +1,41 @@
 {
-    "name": "azheda-utils-v2",
-    "version": "1.5.5",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "prepublishOnly": "node private/change-version.js",
-        "readme": "node private/readme-generator.js",
-        "watchReadme": "nodemon --ext js private/readme-generator.js",
-        "info-md": "node private/infomd-files.js",
-        "watchInfo": "nodemon --ext js private/infomd-files.js",
-        "docs": "nodemon --ext js private/docs.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Az-Heda/JS-stuff.git"
-    },
-    "homepage": "https://github.com/Az-Heda",
-    "author": "AzHeda",
-    "license": "ISC",
-    "dependencies": {
-        "axios": "^1.5.1",
-        "body-parser": "^1.20.2",
-        "clean-jsdoc-theme": "^4.2.17",
-        "cli-table": "^0.3.11",
-        "colors": "^1.4.0",
-        "connect": "^3.7.0",
-        "cors": "^2.8.5",
-        "express": "^4.18.2",
-        "express-list-endpoints": "^6.0.0",
-        "fs": "^0.0.1-security",
-        "fs-extra": "^11.2.0",
-        "path": "^0.12.7",
-        "scss": "^0.2.4",
-        "serve-static": "^1.15.0",
-        "socket.io": "^4.7.2",
-        "vhost": "^3.0.2"
-    }
+	"name": "azheda-utils-v2",
+	"version": "1.5.5",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"prepublishOnly": "node private/change-version.js",
+		"readme": "node private/readme-generator.js",
+		"watchReadme": "nodemon --ext js private/readme-generator.js",
+		"info-md": "node private/infomd-files.js",
+		"watchInfo": "nodemon --ext js private/infomd-files.js",
+		"snippets": "node private/import_snippets.js",
+		"watchSnippets": "nodemon --ext js private/import_snippets.js",
+		"docs": "nodemon --ext js private/docs.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Az-Heda/JS-stuff.git"
+	},
+	"homepage": "https://github.com/Az-Heda",
+	"author": "AzHeda",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^1.5.1",
+		"body-parser": "^1.20.2",
+		"clean-jsdoc-theme": "^4.2.17",
+		"cli-table": "^0.3.11",
+		"colors": "^1.4.0",
+		"connect": "^3.7.0",
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"express-list-endpoints": "^6.0.0",
+		"fs": "^0.0.1-security",
+		"fs-extra": "^11.2.0",
+		"path": "^0.12.7",
+		"scss": "^0.2.4",
+		"serve-static": "^1.15.0",
+		"socket.io": "^4.7.2",
+		"vhost": "^3.0.2"
+	}
 }
