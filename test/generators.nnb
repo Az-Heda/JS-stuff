@@ -1,0 +1,94 @@
+{
+    "cells": [
+        {
+            "language": "typescript",
+            "source": [
+                "\"use strict\";\r\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[32m'use strict'\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "async function sleep(ms : number) : Promise<number> {\r\n\treturn new Promise<number>((resolve : Function) : void => {\r\n\t\tsetTimeout(resolve, ms, ms);\r\n\t});\r\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "async function* createAsyncGenerator(...mss : Array<number>) : AsyncGenerator {\r\n\tfor (let ms of mss) {\r\n\t\tyield await sleep(ms);\r\n\t}\r\n}\r\n\r\nfunction* createGenerator(...vals : Array<any>) : Generator {\r\n\tfor (let x of vals) {\r\n\t\tconsole.log('Gen: ', x)\r\n\t\tyield x;\r\n\t}\r\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "(async () => {\r\n\tconst na : Array<number> = [\r\n\t\t1, 2, 3, 4, 5, 6, 7, 8, 9, 10\r\n\t]\r\n\r\n\tfor await (let _ of createAsyncGenerator(...na.map(i => i*1000))) {\r\n\t\tconsole.log(_);\r\n\t}\r\n})()"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1000",
+                                "2000",
+                                "3000",
+                                "4000",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
