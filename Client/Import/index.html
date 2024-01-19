@@ -6,15 +6,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="import.js"></script>
 		<script>
-			MyImport.css('bootstrap').then(console.log);
-			// MyImport.js('jquery').then(console.log);
-			// MyImport.js('bootstrap').then(console.log);
-			// MyImport.js('danfo').then(console.log);
+
+			(async() => {
+				await MyImport.all('js', 'css');
+			})();
+			
 		</script>
 	</head>
 	<body>
-		<div class="container" style="background-color: #FFAA0022">
-			<h1>Text</h1>
+		<div class="container" color-schema="_tile">
+			<h1 style="text-align: center;">Text</h1>
+			<hr class="style1"/>
 		</div>
 	</body>
 </html>
