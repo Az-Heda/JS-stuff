@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+		<style>
+			#map {
+				width: 50%;
+				height: 50%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				translate: -50% -50%;
+			}
+		</style>
 
+		<script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+		<script src="faker.js"></script>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script>
+			const generator = new MyFaker('it');
+			const n = 100;
+			let d = [];
+			let df;
+			(async() => {
+				let start1 = performance.now();
+				for (let x = 0; x < n; x ++) {
+					d.push(await generator.person());
+				}
+				console.log(`Generation: ${Math.floor(performance.now() - start1)}ms`);
+				let start2 = performance.now();
+				df = new dfd.DataFrame(d);
+				console.log(`Dataframe: ${Math.floor(performance.now() - start2)}ms`);
+				
+
+				// const m = L.map('map', {
+				// 	center: MyFaker.defaultConfig.nearbyGPSCoordinate.origin,
+				// 	zoom: 5,
+				// 	preferCanvas: true,
+				// })
+				// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    			// 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				// }).addTo(m);
+
+				// L.marker(MyFaker.defaultConfig.nearbyGPSCoordinate.origin).addTo(m).bindPopup('Center')
+				
+				// for (let v of dfd.toJSON(df, { format: 'column' })) {
+				// 	console.log(v);
+				// 	L.marker([v.positionLat, v.positionLong]).addTo(m).bindPopup(v.fullName)
+				// }
+				
+				// window['m'] = m;
+			})();
+		</script>
+	</body>
+</html>
