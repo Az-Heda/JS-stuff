@@ -1,6 +1,7 @@
 node_modules/
 tmp/
 temp/
+test/
 
 package-lock.json
 tmp.*

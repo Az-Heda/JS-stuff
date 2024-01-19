@@ -1,5 +1,8 @@
 .editorconfig
 private/
 auto-docs/
+test/
 
 *.py
+*.tsv
+*.csv
