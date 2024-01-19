@@ -56,10 +56,11 @@ class BetterDom {
 	});
 
 	/**
+	 * @static
 	 * @description This function will create an HTMLElement, just as document.createElement, but this allow you to set the class, attributes, content and event append it directly
 	 * @param {string} name Name of the tag
-	 * @param {{parent: HTMLElement, class: (string | list), attr: {[string]: string}, content: (number|string)}} options 
-	 * @returns {HTMLElement} HTMLElement with the options applied to it
+	 * @param {object} options {parent: HTMLElement, class: (string | list), attr: {[string]: string}, content: (number|string)
+	 * @returns {object} HTMLElement with the options applied to it
 	 * 
 	 * __EXAMPLE__
 	 * ```JS
