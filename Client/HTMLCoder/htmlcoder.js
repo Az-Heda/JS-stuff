@@ -5,6 +5,7 @@ class HTMLCoder {
 	 * @param {HTMLElement} htmlElement HTML element to start the recursion, this function will reach every child of this HTMLElement
 	 * @returns {string} Code to copy the element structure
 	 */
+
 	static async save(htmlElement, start=true) {
 		const obj = { isText: false };
 		if (/(HTML[a-zA-Z]{1,}Element)/.exec(htmlElement.constructor.name)) {
@@ -13,6 +14,31 @@ class HTMLCoder {
 			obj.children = [];
 			Array.from(htmlElement.attributes).forEach((a) => { obj.attributes[a.name] = a.value; });
 			for (let c of Array.from(htmlElement.childNodes)) { obj.children.push(await this.save(c, false)) }
+			if (Object.keys(obj.attributes).length === 0) { delete obj.attributes; }
+			if (obj.children.length === 0) { delete obj.children; }
+			return (start) ? this.#_arrayBufferToBase64Url(await this.#_compress(JSON.stringify(obj))) : Promise.resolve(obj);
+		}
+		else if (htmlElement.constructor.name === 'Text') {
+			obj.isText = true;
+			obj.content = htmlElement.data;
+			return obj;
+		}
+		return {};
+	}
+	/**
+	 * @param {HTMLElement} htmlElement HTML element to start the recursion, this function will reach every child of this HTMLElement
+	 * @returns {string} Code to copy the element structure
+	 */
+
+	static async saveWithStyle(htmlElement, start=true) {
+		const obj = { isText: false };
+		this.#_computeStyle(htmlElement);
+		if (/(HTML[a-zA-Z]{1,}Element)/.exec(htmlElement.constructor.name)) {
+			obj.tag = htmlElement.tagName.toLowerCase();
+			obj.attributes = {};
+			obj.children = [];
+			Array.from(htmlElement.attributes).forEach((a) => { obj.attributes[a.name] = a.value; });
+			for (let c of Array.from(htmlElement.childNodes)) { obj.children.push(await this.saveWithStyle(c, false)) }
 			if (Object.keys(obj.attributes).length === 0) { delete obj.attributes; }
 			if (obj.children.length === 0) { delete obj.children; }
 			return (start) ? this.#_arrayBufferToBase64Url(await this.#_compress(JSON.stringify(obj))) : Promise.resolve(obj);
@@ -36,10 +62,23 @@ class HTMLCoder {
 		return Promise.resolve(this.#_tagParser(htmlElement, parent))
 	}
 
+	static #_computeStyle(htmlElement) {
+		console.log(htmlElement.constructor.name)
+		if (/HTML[a-zA-Z]{1,}Element/.exec(htmlElement.constructor.name) === null) return;
+		let obj = {};
+		for (let [k,v] of Object.entries(window.getComputedStyle(htmlElement))) {
+			obj[k] = v;
+		}
+		let validKeys = {};
+		for (let [k, v] of Object.entries(obj)) {
+			k = k.replace(/[A-Z]{1}/, '-$&').toLowerCase();
+			validKeys[k] = v;
+		}
+		htmlElement.setAttribute('style', Object.entries(validKeys).map((i) => { return i.join(':')}).join(';'))
+	}
 
 	static #_tagParser(htmlElements, parent=null) {
 		if (!htmlElements.isText) {
-			console.log(htmlElements)
 			let tag = document.createElement(htmlElements.tag)
 			for (const [k, v] of Object.entries(htmlElements?.attributes || {})) { tag.setAttribute(k, v); }
 			for (let [_, cv] of Object.entries(htmlElements.children || {})) { this.#_tagParser(cv, tag); }
@@ -92,16 +131,8 @@ class HTMLCoder {
 	}
 }
 
-// let obj = {}
-// window.getComputedStyle(x)
-// for (let [k,v] of Object.entries(window.getComputedStyle(x))) {
-// 	let conditions = [
-// 		isNaN(+k),
-// 		v.length > 0,
-// 		v.indexOf(' ') == -1,
-// 		!['auto', '0', '0px', 'inherit', 'normal', 'none'].includes(v),
-// 		!k.startsWith('webkit')
-// 	].every((e) => { return e })
-//     if (conditions) { obj[k] = v }
-// }
-// obj
+
+setTimeout(() => {
+	window['x'] = document.getElementById('test');
+	HTMLCoder.saveWithStyle(x).then(console.log);
+}, 10);
