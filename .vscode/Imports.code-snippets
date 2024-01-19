@@ -1,0 +1,263 @@
+{
+    "Import betterdom": {
+        "scope": "html",
+        "prefix": "!az_js_import_betterdom",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/BetterDom/betterdom.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module BETTERDOM"
+    },
+    "Import cachedfunction": {
+        "scope": "html",
+        "prefix": "!az_js_import_cachedfunction",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/CachedFunction/cachedfunction.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module CACHEDFUNCTION"
+    },
+    "Import colors": {
+        "scope": "html",
+        "prefix": "!az_js_import_colors",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Colors/colors.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module COLORS"
+    },
+    "Import crypt": {
+        "scope": "html",
+        "prefix": "!az_js_import_crypt",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Crypt/crypt.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module CRYPT"
+    },
+    "Import tag": {
+        "scope": "html",
+        "prefix": "!az_js_import_tag",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Tag/tag.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module TAG"
+    },
+    "Import theme": {
+        "scope": "html",
+        "prefix": "!az_js_import_theme",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/CustomTheme/theme.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module THEME"
+    },
+    "Import devtools": {
+        "scope": "html",
+        "prefix": "!az_js_import_devtools",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/DevTools/devtools.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module DEVTOOLS"
+    },
+    "Import dnd": {
+        "scope": "html",
+        "prefix": "!az_js_import_dnd",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/DragNDrop/dnd.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module DND"
+    },
+    "Import event": {
+        "scope": "html",
+        "prefix": "!az_js_import_event",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Event/event.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module EVENT"
+    },
+    "Import htmlcoder": {
+        "scope": "html",
+        "prefix": "!az_js_import_htmlcoder",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/HTMLCoder/htmlcoder.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module HTMLCODER"
+    },
+    "Import import": {
+        "scope": "html",
+        "prefix": "!az_js_import_import",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Import/import.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module IMPORT"
+    },
+    "Import interceptor": {
+        "scope": "html",
+        "prefix": "!az_js_import_interceptor",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Interceptor/interceptor.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module INTERCEPTOR"
+    },
+    "Import loader": {
+        "scope": "html",
+        "prefix": "!az_js_import_loader",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Loader/loader.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module LOADER"
+    },
+    "Import logger": {
+        "scope": "html",
+        "prefix": "!az_js_import_logger",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Logger/logger.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module LOGGER"
+    },
+    "Import notify": {
+        "scope": "html",
+        "prefix": "!az_js_import_notify",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Notify/notify.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module NOTIFY"
+    },
+    "Import objectmerger": {
+        "scope": "html",
+        "prefix": "!az_js_import_objectmerger",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/ObjectMerger/objectmerger.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module OBJECTMERGER"
+    },
+    "Import rng": {
+        "scope": "html",
+        "prefix": "!az_js_import_rng",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Random/rng.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module RNG"
+    },
+    "Import searchstring": {
+        "scope": "html",
+        "prefix": "!az_js_import_searchstring",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Search/searchstring.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module SEARCHSTRING"
+    },
+    "Import signals": {
+        "scope": "html",
+        "prefix": "!az_js_import_signals",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Signal/signal.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module SIGNALS"
+    },
+    "Import socket": {
+        "scope": "html",
+        "prefix": "!az_js_import_socket",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Socket/socket.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module SOCKET"
+    },
+    "Import speechRecognitions": {
+        "scope": "html",
+        "prefix": "!az_js_import_speechRecognitions",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/SpeechRecognition/speechrecognition.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module SPEECHRECOGNITIONS"
+    },
+    "Import storage": {
+        "scope": "html",
+        "prefix": "!az_js_import_storage",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Storage/storage.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module STORAGE"
+    },
+    "Import swap": {
+        "scope": "html",
+        "prefix": "!az_js_import_swap",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Swap/swap.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module SWAP"
+    },
+    "Import template": {
+        "scope": "html",
+        "prefix": "!az_js_import_template",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Template/template.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module TEMPLATE"
+    },
+    "Import time": {
+        "scope": "html",
+        "prefix": "!az_js_import_time",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Time/time.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module TIME"
+    },
+    "Import tree": {
+        "scope": "html",
+        "prefix": "!az_js_import_tree",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/TreePath/tree.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module TREE"
+    },
+    "Import utils": {
+        "scope": "html",
+        "prefix": "!az_js_import_utils",
+        "body": [
+            "<script src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/Utils/utils.js\"></script>",
+            "$0"
+        ],
+        "description": "Import module UTILS"
+    },
+	"Import grid": {
+		"scope": "html",
+		"prefix": "!az_css_import_grid",
+		"body": [
+			"<link rel=\"stylesheet\" src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/_css/grid.css\"/>",
+			"$0"
+		],
+		"description": "Import module GRID"
+	},
+	"Import theme": {
+		"scope": "html",
+		"prefix": "!az_css_import_theme",
+		"body": [
+			"<link rel=\"stylesheet\" src=\"https://cdn.jsdelivr.net/npm/azheda-utils-v2@latest/Client/_css/theme.css\"/>",
+			"$0",
+		],
+		"description": "Import module THEME"
+	}
+}
