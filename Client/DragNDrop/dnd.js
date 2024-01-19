@@ -1,109 +1,115 @@
-class dnd {
-	static #_objDragged = null;
-	static #_movableElements = [];
+class DragNDrop {
+	// https://www.w3schools.com/howto/howto_js_draggable.asp
+	static #_attr = 'movable';
+	static #_styleID = `dnd-style-${new Date().getTime()}`;
+	static #_snap2Grid = 1;
+	static #_allElements = [];
 
-	/**
-	 * @param {HTMLElement} elem HTML Element that can be moved, (this will add the attribute "movable")
-	 */
-	static add(elem) {
-		if (!elem.hasAttribute('movable')) {
-			elem.setAttribute('movable', '');
-		}
-		this.#_config(elem);
-	}	
-	
-	/**
-	 * Set up all of the HTML Elements with the attribute "movable"
-	 * 
-	 * **Example**
-	 * ```html
-	 * <div movable>...</div>
-	 * ```
-	 */
+	static get attr() { return this.#_attr }
+	static get grid() { return this.#_snap2Grid; }
+
+	static set attr(v) { return (this.#_attr = v, this.#_attr) }
+	static set grid(v) { return (this.#_snap2Grid = v, this.#_snap2Grid); }
+
 	static auto() {
-		let elements = this.#_getElementByAttribute('movable');
-		if (elements) {
-			for (let p = 0; p < elements.length; p ++) {
-				this.#_config(elements[p]);
-			}
-			this._eventOnDocument();
+		this.#_setStyle();
+		let elements = document.querySelectorAll(`[${this.#_attr}]`);
+		for (let e of Array.from(elements)) {
+			this.#_enableDragEvent(e)
 		}
 	}
 
-	/**
-	 * @param {HTMLElement} el Setup all of the events and logic for the HTML Element
-	 */
-	static #_config(el) {
-		let sizes = el.getBoundingClientRect();
-		let data = { element: el, ctx: {} };
-		this.#_movableElements.push(data);
-		let currentIndex = this.#_movableElements.length - 1;
+	static add(element) {
+		this.#_setStyle();
+		if (!element.hasAttribute(this.#_attr)) {
+			element.setAttribute(this.#_attr, '');
+		}
+		this.#_enableDragEvent(element);
+	}
 
-		data.element.onmousedown = (e) => {
-			data.ctx = {
-				isDown: true,
-				offsetX: sizes.left - e.clientX,
-				offsetY: sizes.top - e.clientY
+	static remove(element) {
+		if (element.hasAttribute(this.#_attr)) {
+			element.removeAttribute(this.#_attr);
+		}
+
+		element.onmousedown = null;
+		if (this.#_allElements.indexOf(el) >= 0) {
+			this.#_allElements.splice(this.#_allElements.indexOf(el), 1);
+		}
+	}
+
+	static #_enableDragEvent(el) {
+		if (this.#_allElements.indexOf(el) === -1) {
+			this.#_allElements.push(el);
+		}
+		this.#_autoSnap2Grid(el);
+		let pos1 = 0;
+		let pos2 = 0;
+		let pos3 = 0;
+		let pos4 = 0;
+		el.onmousedown = (event) => {
+			event.preventDefault();
+			pos3 = event.clientX;
+			pos4 = event.clientY;
+			document.onmouseup = () => {
+				document.onmouseup = null;
+				document.onmousemove = null;
+				let parentBB = el.parentNode.getBoundingClientRect();
+				el.style.top = parentBB.top + this.#_calcGrid(+el.style.top.replace('px', ''))+'px'
+				el.style.left = parentBB.left + this.#_calcGrid(+el.style.left.replace('px', ''))+'px'
 			};
-			this.#_objDragged = data.element;
-		};
 
-		data.element.onmouseup = (e) => {
-			data.ctx.isDown = false;
+			document.onmousemove = (event) => {
+				event.preventDefault();
+				pos1 = pos3 - event.clientX;
+				pos2 = pos4 - event.clientY;
+				pos3 = event.clientX;
+				pos4 = event.clientY;
+
+				const elementBB = el.getBoundingClientRect()
+				const parentBB = el.parentNode.getBoundingClientRect()
+
+				let top = el.offsetTop - pos2;
+				let left = el.offsetLeft - pos1;
+
+				top  = (top  < parentBB.top)  ? parentBB.top  : top;
+				left = (left < parentBB.left) ? parentBB.left : left;
+				
+				top  = (top  + elementBB.height > parentBB.bottom) ? (parentBB.bottom - elementBB.height) : top;
+				left = (left + elementBB.width  > parentBB.right)  ? (parentBB.right  - elementBB.width)  : left;
+				
+				el.style.top = `${top}px`;
+				el.style.left = `${left}px`;
+			}
 		};
 	}
 
-	static _eventOnDocument() {
-		document.onmousemove = (e) => {
-			for (let p = 0; p < this.#_movableElements.length; p ++) {
-				let sizes = this.#_movableElements[p].element.getBoundingClientRect()
-				let parentBoundingBox = this.#_movableElements[p].element.parentNode.getBoundingClientRect();
-
-				if (e.clientX < parentBoundingBox.left || e.clientX > parentBoundingBox.right) { this.#_movableElements[p].ctx.isDown = false; }
-				if (e.clientY < parentBoundingBox.top || e.clientY > parentBoundingBox.bottom) { this.#_movableElements[p].ctx.isDown = false; }
-	
-				if (this.#_objDragged && this.#_movableElements[p].ctx.isDown) {
-
-					let newX = ((e.pageX + e.clientX) / 2) + this.#_movableElements[p].ctx.offsetX;
-					if (newX + sizes.width > parentBoundingBox.right) { newX = parentBoundingBox.right - sizes.width; }
-					if (newX < parentBoundingBox.left) { newX = parentBoundingBox.left; }
-					
-					let newY = ((e.pageY + e.clientY) / 2) + this.#_movableElements[p].ctx.offsetY;
-					if (newY + sizes.height > parentBoundingBox.bottom) { newY = parentBoundingBox.bottom - sizes.height; }
-					if (newY < parentBoundingBox.top) { newY = parentBoundingBox.top; }
-
-					this.#_movableElements[p].element.style.left = `${newX}px`;
-					this.#_movableElements[p].element.style.top  = `${newY}px`;
-				}
-			}
-		}
+	static #_setStyle() {
+		if (document.querySelector(`#${this.#_styleID}`)) { return false; }
+		let tag = document.createElement('style');
+		tag.setAttribute('id', this.#_styleID);
+		tag.innerHTML = `
+		[movable] { position: absolute; }
+		[movable]:active { user-select: none; }
+		[movable]:hover { cursor: move; }`;
+		document.head.appendChild(tag);
+		return true;
 	}
 
-	/**
-	 * @param {str} attr Attribute name to search
-	 * @param {str} value Value of the element
-	 * @param {HTMLElement} root Root element
-	 * 
-	 * @returns {Array<HTMLElement>} Returns all of the elements with the given attribute and value
-	 * 
-	 * ___
-	 * This function will search all of the child elements of the param ::root::
-	 */
-	static #_getElementByAttribute(attr, value='', root=document.body) {
-		root = root || document.body;
-		if(root.hasAttribute(attr) && root.getAttribute(attr) == value) {
-			return root;
+	static #_autoSnap2Grid(el) {
+		let parentBB = el.parentNode.getBoundingClientRect();
+		el.style.top = parentBB.top + this.#_calcGrid(+el.style.top.replace('px', ''))+'px'
+		el.style.left = parentBB.left + this.#_calcGrid(+el.style.left.replace('px', ''))+'px'
+	}
+
+	static #_calcGrid(val) {
+		let tmp = val - (val % this.#_snap2Grid) 
+		if (val - tmp > this.#_snap2Grid / 2) {
+			tmp += this.#_snap2Grid;
 		}
-		let children = root.children;
-		let elements = [];
-		for(let i = children.length; i--; ) {
-			let element = this.#_getElementByAttribute(attr, value, children[i]);
-			if(element) {
-				elements = elements.concat(element);
-			}
-		}
-		return (elements.length > 0) ? elements : null;
+		return tmp;
 	}
 }
 
-window.addEventListener('load', () => { dnd.auto() })
+
+window.addEventListener('load', () => { DragNDrop.auto() })
