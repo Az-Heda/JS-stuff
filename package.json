@@ -11,7 +11,9 @@
 		"watchInfo": "nodemon --ext js private/infomd-files.js",
 		"snippets": "node private/import_snippets.js",
 		"watchSnippets": "nodemon --ext js private/import_snippets.js",
-		"docs": "nodemon --ext js private/docs.js"
+		"docs": "nodemon --ext js private/docs.js",
+		"docs:generate": "node ./node_modules/jsdoc/jsdoc.js -t js-docs/",
+		"docs:generate:watch": "nodemon --ext js ./node_modules/jsdoc/jsdoc.js -t js-docs/"
 	},
 	"repository": {
 		"type": "git",
