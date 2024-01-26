@@ -71,6 +71,7 @@ function itemParser(item) {
 		paramnames: item?.meta?.code?.paramnames || [],
 		returns: item?.returns,
 		description: item?.description,
+		async: item?.async || false,
 	});
 	return outputItem;
 }
@@ -94,37 +95,33 @@ function parserMD(gdata) {
 		const getterList = methods.filter(m => m.memberof == c.longname && m?.kind === 'member' && m.paramnames.length == 0);
 		const setterList = methods.filter(m => m.memberof == c.longname && m?.kind === 'member' && m.paramnames.length == 1);
 
-		if (methodList.length > 0) lines.push('\n' + MD.title3('Methods'));
-		for (let method of methodList) {
-			// lines.push(`#### - ${method.name}`)
-			lines.push('\n' + MD.title4(method.name));
-			if (method?.description) lines.push('\n' + method.description);
-			lines.push(...MD.returnTable(method?.returns || []));
-		}
 
-		// Getter
-		if (methodList.length > 0) lines.push('\n' + MD.title3('Getters'));
-		for (let method of getterList) {
-			lines.push(MD.title4(method.name));
-			if (method?.description) lines.push('\n' + method.description);
+		for (let [title, arr] of Object.entries({
+			'Methods': methodList,
+			'Getters': getterList,
+			'Setters': setterList,
+		})) {
+			if (arr.length > 0) lines.push('\n' + MD.title3(title));
+			for (let method of arr) {
+				lines.push('\n' + MD.title4(method.name, { prefix: '-' }));
+				if (method?.description) lines.push('\n' + method.description);
+				if (method?.params.length > 0) lines.push(...MD.paramsTable(method), '');
+				lines.push(...MD.returnTable(method?.returns || []), ' ');
+				if (method?.async) lines.push('- `async method`')
+				if (method?.scope == 'static') lines.push('- `static method`')
+			}
+			lines.push('\n', '<hr/>')
 		}
-
-		// Setter
-		if (methodList.length > 0) lines.push('\n' + MD.title3('Setters'));
-		for (let method of setterList) {
-			lines.push(MD.title4(method.name));
-			if (method?.description) lines.push('\n' + method.description);
-		}
-
 	}
+	if (lines[lines.length - 1] == '<hr/>') lines.pop();
 }
 
 
 const MD = {
-	title1: (t) => `# ${t}`,
-	title2: (t) => `## ${t}`,
-	title3: (t) => `### ${t}`,
-	title4: (t) => `#### - ${t}`,
+	title1: (t, opt = {}) => `# ${opt?.prefix || ''} ${t} ${opt?.suffix || ''}`,
+	title2: (t, opt = {}) => `## ${opt?.prefix || ''} ${t} ${opt?.suffix || ''}`,
+	title3: (t, opt = {}) => `### ${opt?.prefix || ''} ${t} ${opt?.suffix || ''}`,
+	title4: (t, opt = {}) => `#### ${opt?.prefix || ''} ${t} ${opt?.suffix || ''}`,
 	title5: (t) => `##### ${t}`,
 	bold: (t) => `**${t.trim()}** `,
 	italic: (t) => `_${t.trim()}_ `,
@@ -139,6 +136,18 @@ const MD = {
 			for (let t of (a?.type?.names || [])) {
 				parts.push(`| ${t} |`)
 			}
+		}
+		return parts;
+	},
+	paramsTable: (arr) => {
+		let parts = [
+			'\n',
+			MD.title4('Parameters') + '\n',
+			'| Name | Type | Default | Description |',
+			'| ---- | :--: | :-----: | ----------- |',
+		];
+		for (let p of (arr?.params || [])) {
+			parts.push(`| ${p?.name} | ${p?.type?.names.join(' | ')} | ${p?.defaultvalue || ''} | ${p?.description || ''} |`);
 		}
 		return parts;
 	}
