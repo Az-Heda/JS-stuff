@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="./svg.js"></script>
+	</head>
+	<body>
+		<script>
+			const svg = new MSVG(0, 0, 1000, 1000);
+			svg.group('prova')
+			// let lgid = svg.linearGradient('firstLinearGradient', { colors: ['#00AAFF', '#FF00AA']}, 'prova');
+			svg.drawCircle({ cx: 50, cy: 50, r: 50, fill: '#FFAA00' }, 'prova');
+			svg.drawEllipse({ cx: 100, cy: 100, rx: 10, ry: 20, fill: '#FF00AA'}, 'prova')
+			svg.drawImage('https://live.mdnplay.dev/en-US/docs/Web/SVG/Element/image/mdn_logo_only_color.png',{ width: 150, x: 200})
+			svg.drawLine({ x1: 0, y1: 160, x2: 400, y2: 160, stroke: '#000000'}, 'prova')
+
+			svg.appendTo(document.body)
+			console.log(svg);
+		</script>
+	</body>
+</html>
